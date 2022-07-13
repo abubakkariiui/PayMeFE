@@ -65,6 +65,8 @@ const Signin = () => {
     e.preventDefault();
 
     if (password !== confirmpassword) {
+      toast.error("Password and Confirm Password Donot Match")
+      return
     } else
       dispatch(
         register(

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -13,13 +14,20 @@ const Contact = () => {
     const data = { name, email, phone, message };
     axios
       .post("/api/contact/create", data)
-      .then((res) => {
-        console.log("Contact Data", res.data);
+      .then(() => {
+        toast.success("Message sent successfully");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const emptyFields = () => {
+    setEmail("");
+    setMessage("");
+    setPhone("");
+    setEmail("");
+  }
 
   return (
     <>
@@ -80,6 +88,7 @@ const Contact = () => {
                   className="btn btn-outline-secondary"
                   type="submit"
                   id="btn"
+                  onClick={emptyFields}
                 >
                   Submit form
                 </button>
@@ -88,6 +97,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
   );
 };

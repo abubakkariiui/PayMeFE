@@ -1,25 +1,28 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../profile/UserProfile.css";
 import { logoutAgent, updateAgentProfile } from "./../actions/agentActions";
 import { toast, ToastContainer } from "react-toastify";
 const AgentProfile = () => {
-  const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [pic, setPic] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [picMessage, setPicMessage] = useState();
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [pic, setPic] = useState("");
+  const [picMessage, setPicMessage] = useState();
+  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const agentLogin = useSelector((state) => state.agentLogin);
   const { agentInfo } = agentLogin;
-  const notify = () => {};
   const agentUpdate = useSelector((state) => state.agentUpdate);
   const { loading, error, success } = agentUpdate;
-
+  
+  const notify = () => {};
+  
   const postDetails = (pics) => {
     setPicMessage(null);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
@@ -51,8 +54,7 @@ const AgentProfile = () => {
       setName(agentInfo.name);
       setEmail(agentInfo.email);
       setPic(agentInfo.pic);
-      console.log(agentInfo.name);
-      console.log(agentInfo.email);
+      setAddress(agentInfo.address);
     }
   }, [agentInfo]);
 
@@ -69,6 +71,7 @@ const AgentProfile = () => {
         email,
         password,
         pic,
+        address,
       })
     );
     toast.success("Profile Updated Successfully");
@@ -79,6 +82,7 @@ const AgentProfile = () => {
           email,
           password,
           pic,
+          address,
         })
       );
       toast.success("Password Updated");
@@ -90,7 +94,10 @@ const AgentProfile = () => {
   return (
     <>
       <div className="mb-3">
-        <h1 className="text-center">Agent Profile</h1>
+        <div>
+          <NavLink to="/agent" style={{marginLeft: 150}}>Back</NavLink>
+        </div>
+        <h1 className="text-center text-uppercase">Agent Profile</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -137,6 +144,17 @@ const AgentProfile = () => {
                     placeholder="Email"
                   />
                 </div>
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="form-control"
+                  placeholder="Address"
+                />
               </div>
               <div className="mb-3">
                 <label className="form-label">Password</label>

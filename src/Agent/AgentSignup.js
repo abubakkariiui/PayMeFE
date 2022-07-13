@@ -2,6 +2,8 @@ import { registerAgent } from "../actions/agentActions";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
+
 
 const AgentSignup = () => {
   const [name, setName] = useState("");
@@ -18,22 +20,25 @@ const AgentSignup = () => {
 
   useEffect(() => {
     if (agentInfo) {
-      navigate("/agentLogin");
+      navigate("/agentProfile");
     }
   }, [agentInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
+      toast.success('Password and Comfirm Password donot match')
+      return
     } else
       dispatch(
         registerAgent(
           name,
           email,
-          password,
           address,
+          password,
         )
       );
+      toast.success('Please Login')
   }
 
   return (
@@ -138,6 +143,7 @@ const AgentSignup = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
   );
 };

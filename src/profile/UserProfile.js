@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./UserProfile.css";
@@ -100,7 +100,12 @@ const UserProfile = () => {
   return (
     <>
       <div className="mb-3">
-        <h1 className="text-center">User Profile</h1>
+        <div>
+          <NavLink to="/Profile" style={{ marginLeft: 150 }}>
+            Back
+          </NavLink>
+        </div>
+        <h1 className="text-center text-uppercase">User Profile</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">

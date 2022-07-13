@@ -14,12 +14,13 @@ const AgentSignIn = () => {
   const { loading, error, agentInfo } = agentLogin;
   useEffect(() => {
     if (agentInfo) {
+      localStorage.getItem('agentInfo');
       navigate("/agentProfile");
     }
   }, [agentInfo]);
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(loginAgent(email, password));
   };
 

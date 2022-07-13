@@ -52,7 +52,7 @@ export const logoutAgent = () => async (dispatch) => {
 // Register
 
 export const registerAgent =
-  (name, email, password, pic, phone, city, postalCode, address, cnic) =>
+  (name, email, address, password, phone, city, postalCode, pic, cnic) =>
   async (dispatch) => {
     try {
       dispatch({ type: AGENT_REGISTER_REQUEST });
@@ -101,7 +101,7 @@ export const updateAgentProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/agent/profile", user, config);
+    const { data } = await axios.post("/api/agent/agentProfile", user, config);
 
     dispatch({ type: AGENT_UPDATE_SUCCESS, payload: data });
 
