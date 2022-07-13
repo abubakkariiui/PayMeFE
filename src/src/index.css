@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding-bottom: 4px;
+  
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#header {
+  width: 100%;
+  height: 80vh;
+  margin-top: 0px; 
+}
+#header h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  color: black;
+}
+#header h2{
+  color:dimgray;
+  font-size: 24px;
+}
+#header .btn-get-started {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 50px;
+  color: dimgray;
+  border: 2px solid black;
+  text-decoration: none;
+}
+.margin{
+  margin-top: 25px;
+}
+@media screen and (min-width:500px) {
+  .info {
+       padding-top: 400px;
+  }
+}
+@media screen and (min-width:800px) {
+  .info {
+       padding-top: 50px;
+  }
+}
+#btn{
+  margin-left:0px;
+  transition:0.9ss;
+}
+#btn:hover{
+  background-color:dimgrey;
+  color:#fff;
+}
+.header-img {
+  text-align: right;
+}
+.navbar {
+  display: flex;
+  position: absolute;
+  height: 50px;
+  background-color:white !important;
+}
+.navbar-nav .nav-item .nav-link:focus {
+  text-decoration: underline;
+  font-size: larger;
+  font:bold;
+}
+.navbar-brand {
+  font-size: 1.9rem !important;
+  color: dimgray !important;
+  
+}
+.navbar a:hover {
+  
+  color: black !important;
+}
+.menu_active {
+  font-weight: bold !important;
+  border-bottom: 1px solid red !important;
+}
+#header .brand-name {
+  color: dimgray;
+}
+.tablee{
+  margin-bottom: 100px;
+}
+.churai {
+  margin-left: 60px;
+  margin-top: 40px;
+}
+.pCard{
+  margin-left : 7em;
+}
+.wallet {
+  margin-top: 250px;
+}
+#bgCard{
+  width: 700px;
+}
+
+.bg-footer {
+  height: 4%;
+  color:black;
+  background-color: dimgray;
+}
+.main-container {
+  background-image: url('../src/images/coins.png');
+  width: 85%;
+  
+  padding-bottom: 15%;
+  padding-top: 15%;
+  margin-left: 100px;
+
+}
+ .animated {
+ animation: up-down 3s ease-in-out infinite alternate-reverse both;
+}
+
+
+
+
+@-webkit-keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+  @keyframes up-down {
+    0% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
