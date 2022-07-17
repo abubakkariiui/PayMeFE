@@ -45,7 +45,6 @@ const Profile = () => {
               <img src={image} className="card-img-top" alt="..." />
               <div className="card-body text-center">
                 <h5 className="card-title text-uppercase">{name}</h5>
-                <button onClick={logoutHandler}>logout</button>
               </div>
             </div>
           </div>

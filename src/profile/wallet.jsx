@@ -6,24 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const Wallet = () => {
-
-  const [money, setMoney] = useState('')
+  const [money, setMoney] = useState("");
 
   const dispatch = useDispatch();
-
-  const agentLogin = useSelector((state) => state.agentLogin);
-  const { agentInfo } = agentLogin;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if(agentInfo){
-      setMoney(agentInfo.amount)
-    }else if(userInfo){
-      setMoney(userInfo.amount)
+    if (userInfo) {
+      setMoney(userInfo.amount);
     }
-  },[])
+  }, []);
 
   return (
     <>

@@ -29,6 +29,8 @@ import AgentProfile from "./Agent/AgentProfile";
 import AgentDashboard from './AgentDashboard';
 import ContactList from "./components/ContactList";
 import CsrList from "./components/CsrList";
+import AgentSendMoney from "./Agent/AgentSendMoney";
+import AgentWallet from "./Agent/AgentWallet";
 const App =() =>{
     return ( 
     <>
@@ -47,6 +49,7 @@ const App =() =>{
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/wallet" element={<Wallet/>}/>
+        <Route path="/agentWallet" element={<AgentWallet />} />
         <Route path="/Tpin" element={<Tpin/>}/>
         <Route path="/history" element={<History/>}/>
         <Route path="/transPayme" element={<TransPayme/>}/>
@@ -54,6 +57,7 @@ const App =() =>{
         <Route path="/CSR" element={<CSR/>}/>
         <Route path="/csrList" element={<CsrList />} />
         <Route path="/sendMoney" element={<SendMoney/>}/>
+        <Route path="/agentMoney" element={<AgentSendMoney />} />
         <Route path="/Accountant" element={<Accountant/>}/>
         <Route path="/accountHandler" element={<AccountHandler/>}/>
         <Route path="/login" element={<Login/>}/>

@@ -50,7 +50,7 @@ const AgentDashboard = () => {
 
           <div className="col-2">
             <div className="card churai cd">
-              <NavLink to="/wallet">
+              <NavLink to="/agentWallet">
                 <img src={wallet} className="card-img-top" alt="..." />
               </NavLink>
               <div className="card-body">

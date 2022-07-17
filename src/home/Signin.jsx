@@ -65,8 +65,8 @@ const Signin = () => {
     e.preventDefault();
 
     if (password !== confirmpassword) {
-      toast.error("Password and Confirm Password Donot Match")
-      return
+      toast.error("Password and Confirm Password Donot Match");
+      return;
     } else
       dispatch(
         register(
@@ -87,7 +87,9 @@ const Signin = () => {
     <>
       <div className="my-5">
         <h1 className="text-center">Sign Up</h1>
-        <p className="text-center">Sign up as <Link to='/agentRegister'>Agent</Link></p>
+        <p className="text-center">
+          Sign up as <Link to="/agentRegister">Agent</Link>
+        </p>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -103,7 +105,7 @@ const Signin = () => {
                     onChange={(e) => setName(e.target.value)}
                     className="form-control"
                     id="exampleFormControlInput1"
-                    placeholder="Ahsan Ejaz"
+                    placeholder="Name"
                   />
                 </div>
                 <div className="col-md-6 mb-3">
@@ -115,7 +117,7 @@ const Signin = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     id="exampleFormControlInput2"
-                    placeholder="name@mail.com"
+                    placeholder="Email"
                   />
                 </div>
               </div>
@@ -128,7 +130,7 @@ const Signin = () => {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     className="form-control"
-                    placeholder="Lahore"
+                    placeholder="Address"
                   />
                 </div>
                 <div className="col-md-6 mb-3">
@@ -139,7 +141,7 @@ const Signin = () => {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     className="form-control"
-                    placeholder="Mardan"
+                    placeholder="City"
                   />
                 </div>
               </div>
@@ -163,7 +165,7 @@ const Signin = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="form-control"
-                    placeholder="123123123"
+                    placeholder="00000000000"
                   />
                 </div>
               </div>
@@ -190,13 +192,8 @@ const Signin = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     id="inputPassword5"
                     className="form-control"
-                    aria-describedby="passwordHelpBlock"
+                    placeholder="Password"
                   />
-                  <div id="passwordHelpBlock" className="form-text">
-                    Your password must be 8-20 characters long, contain letters
-                    and numbers, and must not contain spaces, special
-                    characters, or emoji.
-                  </div>
                 </div>
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Confirm Password</label>
@@ -206,28 +203,29 @@ const Signin = () => {
                     value={confirmpassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="form-control"
-                    id="exampleInputPassword1"
+                    placeholder="Confirm Password"
                   />
                 </div>
               </div>
               <div className="mb-3 form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="exampleCheck1"
-                />
+                <input type="checkbox" className="form-check-input" />
                 <label className="form-check-label">
                   Agree to terms and conditions
                 </label>
               </div>
-              <button
-                className="btn btn-outline-secondary"
-                type="submit"
-                id="btn"
-                onClick={notify}
-              >
-                Register
-              </button>
+              <div style={{ float: "right" }}>
+                <button
+                  className="btn btn-outline-secondary"
+                  type="submit"
+                  id="btn"
+                  onClick={notify}
+                >
+                  Register
+                </button>
+                <br />
+                <br />
+                <br />
+              </div>
             </form>
           </div>
         </div>

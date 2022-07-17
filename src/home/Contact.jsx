@@ -16,18 +16,15 @@ const Contact = () => {
       .post("/api/contact/create", data)
       .then(() => {
         toast.success("Message sent successfully");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  const emptyFields = () => {
-    setEmail("");
-    setMessage("");
-    setPhone("");
-    setEmail("");
-  }
 
   return (
     <>
@@ -43,6 +40,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="name"
+                  value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="form-control"
                   id="exampleFormControlInput1"
@@ -53,7 +51,8 @@ const Contact = () => {
                 <label className="form-label">Email address</label>
                 <input
                   type="email"
-                  name="name"
+                  name="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
                   id="exampleFormControlInput1"
@@ -64,7 +63,8 @@ const Contact = () => {
                 <label className="form-label">Phone Number</label>
                 <input
                   type="number"
-                  name="name"
+                  name="phone"
+                  value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="form-control"
                   id="exampleFormControlInput1"
@@ -76,7 +76,8 @@ const Contact = () => {
                 <label className="form-label">Message</label>
                 <textarea
                   className="form-control"
-                  name="name"
+                  name="message"
+                  value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   id="exampleFormControlTextarea1"
                   rows="3"
@@ -88,7 +89,6 @@ const Contact = () => {
                   className="btn btn-outline-secondary"
                   type="submit"
                   id="btn"
-                  onClick={emptyFields}
                 >
                   Submit form
                 </button>

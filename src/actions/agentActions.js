@@ -52,7 +52,7 @@ export const logoutAgent = () => async (dispatch) => {
 // Register
 
 export const registerAgent =
-  (name, email, address, password, phone, city, postalCode, pic, cnic) =>
+  (name, email, address,pranchiseName, password, phone, city, postalCode, pic, cnic) =>
   async (dispatch) => {
     try {
       dispatch({ type: AGENT_REGISTER_REQUEST });
@@ -65,7 +65,7 @@ export const registerAgent =
 
       const { data } = await axios.post(
         "/api/agent/agentRegister",
-        { name, email, password, pic, phone, city, postalCode, address, cnic },
+        { name, email, password, pic, phone,pranchiseName, city, postalCode, address, cnic },
         config
       );
 

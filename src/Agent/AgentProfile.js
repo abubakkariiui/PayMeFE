@@ -12,7 +12,8 @@ const AgentProfile = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [pic, setPic] = useState("");
   const [picMessage, setPicMessage] = useState();
-  
+  const [city, setCity] = useState("");
+  const [franchise, setFranchise] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,9 +21,9 @@ const AgentProfile = () => {
   const { agentInfo } = agentLogin;
   const agentUpdate = useSelector((state) => state.agentUpdate);
   const { loading, error, success } = agentUpdate;
-  
+
   const notify = () => {};
-  
+
   const postDetails = (pics) => {
     setPicMessage(null);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
@@ -55,6 +56,8 @@ const AgentProfile = () => {
       setEmail(agentInfo.email);
       setPic(agentInfo.pic);
       setAddress(agentInfo.address);
+      setCity(agentInfo.city);
+      setFranchise(agentInfo.pranchiseName);
     }
   }, [agentInfo]);
 
@@ -72,6 +75,7 @@ const AgentProfile = () => {
         password,
         pic,
         address,
+        city,
       })
     );
     toast.success("Profile Updated Successfully");
@@ -83,6 +87,7 @@ const AgentProfile = () => {
           password,
           pic,
           address,
+          city
         })
       );
       toast.success("Password Updated");
@@ -95,7 +100,9 @@ const AgentProfile = () => {
     <>
       <div className="mb-3">
         <div>
-          <NavLink to="/agent" style={{marginLeft: 150}}>Back</NavLink>
+          <NavLink to="/agent" style={{ marginLeft: 150 }}>
+            Back
+          </NavLink>
         </div>
         <h1 className="text-center text-uppercase">Agent Profile</h1>
       </div>
@@ -145,15 +152,39 @@ const AgentProfile = () => {
                   />
                 </div>
               </div>
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Address</label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="form-control"
+                    placeholder="Address"
+                  />
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="form-control"
+                    placeholder="City"
+                  />
+                </div>
+              </div>
               <div className="mb-3">
-                <label className="form-label">Address</label>
-                <input
+                <label className="form-label">Franchise</label>
+                <input disabled
                   type="text"
-                  name="address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  name="franchise"
+                  value={franchise}
+                  onChange={(e) => setFranchise(e.target.value)}
                   className="form-control"
-                  placeholder="Address"
+                  placeholder="Franchise"
                 />
               </div>
               <div className="mb-3">

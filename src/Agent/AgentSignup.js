@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
-
 const AgentSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
+  const [pranchiseName, setPranchiseName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,19 +26,12 @@ const AgentSignup = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
-      toast.success('Password and Comfirm Password donot match')
-      return
+      toast.success("Password and Comfirm Password donot match");
+      return;
     } else
-      dispatch(
-        registerAgent(
-          name,
-          email,
-          address,
-          password,
-        )
-      );
-      toast.success('Please Login')
-  }
+      dispatch(registerAgent(name, email, address, pranchiseName, password));
+    toast.success("Please Login");
+  };
 
   return (
     <>
@@ -76,16 +68,31 @@ const AgentSignup = () => {
                   />
                 </div>
               </div>
-                <div className="mb-3">
-                  <label className="form-label">Address</label>
-                  <input
-                    type="text"
-                    name="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    className="form-control"
-                    placeholder="Lahore"
-                  />
+              <div className="mb-3">
+                <label className="form-label">Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="form-control"
+                  placeholder="Lahore"
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Select Franchise</label>
+                <select
+                  className="form-select"
+                  name="pranchiseName"
+                  value={pranchiseName}
+                  onChange={(e) => setPranchiseName(e.target.value)}
+                >
+                  <option value="Commercial Market" selected>Commercial Market</option>
+                  <option value="Valancia Town">Valancia Town</option>
+                  <option value="Muslim Town">Muslim Town</option>
+                  <option value="Wapda Town">Wapda Town</option>
+                  <option value="Gawal Manddi">Gawal Manddi</option>
+                </select>
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
@@ -118,7 +125,6 @@ const AgentSignup = () => {
                 </div>
               </div>
               <div className="row">
-
                 <div className="col-md-10 mb-3 form-check">
                   <input
                     type="checkbox"
@@ -130,13 +136,13 @@ const AgentSignup = () => {
                   </label>
                 </div>
                 <div className="col-md-2">
-                <button
-                  className="btn btn-outline-secondary"
-                  type="submit"
-                  id="btn"
-                >
-                  Register
-                </button>
+                  <button
+                    className="btn btn-outline-secondary"
+                    type="submit"
+                    id="btn"
+                  >
+                    Register
+                  </button>
                 </div>
               </div>
             </form>
