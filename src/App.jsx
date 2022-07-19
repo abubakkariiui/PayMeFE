@@ -18,7 +18,6 @@ import TransAgent from "./profile/transAgent";
 import Tpin from "./profile/Tpin";
 import CSR from "./profile/CSR";
 import SendMoney from "./profile/sendMoney";
-import Accountant from "./management/Accountant";
 import AccountHandler from "./management/accountHandler";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
@@ -31,6 +30,9 @@ import ContactList from "./components/ContactList";
 import CsrList from "./components/CsrList";
 import AgentSendMoney from "./Agent/AgentSendMoney";
 import AgentWallet from "./Agent/AgentWallet";
+import UserRequest from "./Agent/UserRequest";
+import Accountant from "./components/Accountant";
+import AgentList from "./Agent/AgentList";
 const App =() =>{
     return ( 
     <>
@@ -50,15 +52,17 @@ const App =() =>{
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/wallet" element={<Wallet/>}/>
         <Route path="/agentWallet" element={<AgentWallet />} />
+        <Route path="/userRequest" element={<UserRequest />} />
         <Route path="/Tpin" element={<Tpin/>}/>
         <Route path="/history" element={<History/>}/>
         <Route path="/transPayme" element={<TransPayme/>}/>
         <Route path="/transBank" element={<TransBank/>}/>
         <Route path="/CSR" element={<CSR/>}/>
         <Route path="/csrList" element={<CsrList />} />
+        <Route path="/allAgents" element={<AgentList />} />
         <Route path="/sendMoney" element={<SendMoney/>}/>
         <Route path="/agentMoney" element={<AgentSendMoney />} />
-        <Route path="/Accountant" element={<Accountant/>}/>
+        <Route path="/Accountant" element={<Accountant />}/>
         <Route path="/accountHandler" element={<AccountHandler/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signin/>}/>

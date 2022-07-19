@@ -36,7 +36,6 @@ const AgentDashboard = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-2"></div>
           <div className="col-2">
             <div className="card churai cd">
               <img src={agentImage} className="card-img-top" alt="..." />
@@ -55,6 +54,17 @@ const AgentDashboard = () => {
               </NavLink>
               <div className="card-body">
                 <h5 className="card-title text-center">Wallet</h5>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-2">
+            <div className="card churai cd">
+              <NavLink to="/userRequest">
+                <img src={his} className="card-img-top" alt="/history" />{" "}
+              </NavLink>
+              <div className="card-body">
+                <h5 className="card-title text-center">User Request</h5>
               </div>
             </div>
           </div>
