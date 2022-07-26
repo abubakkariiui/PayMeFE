@@ -33,14 +33,13 @@ import AgentWallet from "./Agent/AgentWallet";
 import UserRequest from "./Agent/UserRequest";
 import Accountant from "./components/Accountant";
 import AgentList from "./Agent/AgentList";
-import FLogin from "./Franchise/FLogin";
-import FRegister from "./Franchise/FRegister";
-import FProfile from "./Franchise/FProfile";
 import AdminDashboard from './Admin/AdminDashboard'
 import AdminProfile from './Admin/AdminProfile'
 import AdminSignUp from "./Admin/AdminSignUp";
 import AdminLogin from "./Admin/AdminLogin";
-import AllFranchises from "./Franchise/AllFranchises";
+import FranchiseRegister from "./Franchise/FranchiseRegister";
+import FranchiseLogin from "./Franchise/FranchiseLogin";
+import FranchiseProfile from "./Franchise/FranchiseProfile";
 
 const App = () => {
   return (
@@ -77,11 +76,9 @@ const App = () => {
         <Route path="/signup" element={<Signin />} />
 
         {/* Franchise */}
-        <Route path="/fregister" element={<FRegister />} />
-        <Route path="/flogin" element={<FLogin />} />
-        <Route path="/fprofile" element={<FProfile />} />
-        <Route path="/allFranchises" element={<AllFranchises />} />
-
+        <Route path="/franchiseRegister" element={<FranchiseRegister />} />
+        <Route path="/franchiseLogin" element={<FranchiseLogin /> }/>
+        <Route path="/franchiseProfile" element={<FranchiseProfile />} />
 
         {/* Admin */}
         <Route path="/adminRegister" element={<AdminSignUp />} />

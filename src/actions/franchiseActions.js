@@ -13,7 +13,7 @@ import {
 import axios from "axios";
 
 // Login
-export const loginFranchise = (email, password) => async (dispatch) => {
+export const FLogin = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: FRANCHISE_LOGIN_REQUEST });
 
@@ -24,14 +24,14 @@ export const loginFranchise = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/franchise/flogin",
+      "/api/franchise/franchiseLogin",
       { email, password },
       config
     );
 
     dispatch({ type: FRANCHISE_LOGIN_SUCCESS, payload: data });
 
-    localStorage.setItem("testInfo", JSON.stringify(data));
+    localStorage.setItem("fInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: FRANCHISE_LOGIN_FAIL,
@@ -44,15 +44,16 @@ export const loginFranchise = (email, password) => async (dispatch) => {
 };
 
 // Logout
-export const logoutFranchise = () => async (dispatch) => {
-  localStorage.removeItem("testInfo");
+export const FLogout = () => async (dispatch) => {
+  localStorage.removeItem("fInfo");
   dispatch({ type: FRANCHISE_LOGOUT });
 };
 
 // Register
 
-export const registerFranchise =
-  (name, email, password, pic) => async (dispatch) => {
+export const FRegister =
+  (name, email, password, pic) =>
+  async (dispatch) => {
     try {
       dispatch({ type: FRANCHISE_REGISTER_REQUEST });
 
@@ -63,7 +64,7 @@ export const registerFranchise =
       };
 
       const { data } = await axios.post(
-        "/api/franchise",
+        "/api/franchiseRegister",
         { name, email, password, pic },
         config
       );
@@ -72,7 +73,7 @@ export const registerFranchise =
 
       dispatch({ type: FRANCHISE_LOGIN_SUCCESS, payload: data });
 
-      localStorage.setItem("testInfo", JSON.stringify(data));
+      localStorage.setItem("fInfo", JSON.stringify(data));
     } catch (error) {
       dispatch({
         type: FRANCHISE_REGISTER_FAIL,
@@ -85,28 +86,28 @@ export const registerFranchise =
   };
 
 // Update Profile
-export const updateFranchiseProfile = (user) => async (dispatch, getState) => {
+export const updateFProfile = (user) => async (dispatch, getState) => {
   try {
     dispatch({ type: FRANCHISE_UPDATE_REQUEST });
 
     const {
-      userLogin: { testInfo },
+      franchiseLogin: { fInfo },
     } = getState();
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${testInfo.token}`,
+        Authorization: `Bearer ${fInfo.token}`,
       },
     };
 
-    const { data } = await axios.post("/api/franchise/fprofile", user, config);
+    const { data } = await axios.post("/api/franchise/franchiseProfile", user, config);
 
     dispatch({ type: FRANCHISE_UPDATE_SUCCESS, payload: data });
 
     dispatch({ type: FRANCHISE_LOGIN_SUCCESS, payload: data });
 
-    localStorage.setItem("testInfo", JSON.stringify(data));
+    localStorage.setItem("fInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: FRANCHISE_UPDATE_FAIL,

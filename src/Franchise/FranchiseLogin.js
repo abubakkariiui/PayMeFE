@@ -1,37 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { loginFranchise } from '../actions/franchiseActions';
+import { FLogin } from '../actions/franchiseActions'
 
-const FLogin = () => {
+const FranchiseLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const franchiseLogin = useSelector((state) => state.franchiseLogin);
-  const { testInfo } = franchiseLogin;
+  const { loading, error, fInfo } = franchiseLogin;
 
   useEffect(() => {
-    if (testInfo) {
-      localStorage.getItem('testInfo');
-      navigate("/fprofile");
+    if (fInfo) {
+      navigate("/franchiseProfile");
     }
-  }, [testInfo,navigate]);
+  }, [fInfo,navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(loginFranchise(email, password));
+    dispatch(FLogin(email, password));
     setTimeout(() => {
       window.location.reload();
     },1000)
   };
-
   return (
     <>
     <div className="my-5">
-        <h1 className="text-center">Franchise LogIn</h1>
+        <h1 className="text-center">FRANCHISE LOGIN</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -73,4 +70,4 @@ const FLogin = () => {
   )
 }
 
-export default FLogin
+export default FranchiseLogin

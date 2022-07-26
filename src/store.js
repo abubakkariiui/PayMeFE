@@ -6,17 +6,21 @@ import {
   userRegisterReducer,
   userUpdateReducer,
 } from "./reducers/userReducers";
-import { adminLoginReducer, adminRegisterReducer, adminUpdateReducer } from './reducers/adminReducers'
+import {
+  adminLoginReducer,
+  adminRegisterReducer,
+  adminUpdateReducer,
+} from "./reducers/adminReducers";
 import {
   agentLoginReducer,
   agentRegisterReducer,
   agentUpdateReducer,
 } from "./reducers/agentReducers";
 import {
-  loginFranchise,
-  registerFranchise,
-  updateFranchiseProfile,
-} from "./actions/franchiseActions";
+  franchiseLoginReducer,
+  franchiseRegisterReducer,
+  franchiseUpdateReducer,
+} from "./reducers/franchiseReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -28,9 +32,9 @@ const reducer = combineReducers({
   agentLogin: agentLoginReducer,
   agentRegister: agentRegisterReducer,
   agentUpdate: agentUpdateReducer,
-  fRegister: registerFranchise,
-  franchiseLogin: loginFranchise,
-  fUpdate: updateFranchiseProfile,
+  franchiseLogin: franchiseLoginReducer,
+  franchiseRegister: franchiseRegisterReducer,
+  franchiseUpdate: franchiseUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -44,16 +48,15 @@ const adminInfoFromStorage = localStorage.getItem("adminInfo")
 const agentInfoFromStorage = localStorage.getItem("agentInfo")
   ? JSON.parse(localStorage.getItem("agentInfo"))
   : null;
-
-const franchiseInfoFromStorage = localStorage.getItem("testInfo")
-  ? JSON.parse(localStorage.getItem("testInfo"))
+const franchiseInfoFromStorage = localStorage.getItem("fInfo")
+  ? JSON.parse(localStorage.getItem("fInfo"))
   : null;
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
   adminLogin: { adminInfo: adminInfoFromStorage },
   agentLogin: { agentInfo: agentInfoFromStorage },
-  franchiseLogin: { testInfo: franchiseInfoFromStorage },
+  franchiseLogin: { fInfo: franchiseInfoFromStorage },
 };
 
 const middleware = [thunk];

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { toast, ToastContainer } from 'react-toastify'
-import { registerFranchise } from '../actions/franchiseActions'
+import { FRegister } from '../actions/franchiseActions'
 
-const FRegister = () => {
+const FranchiseRegister = () => {
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,29 +14,29 @@ const FRegister = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const fRegister = useSelector((state) => state.fRegister);
-  const { testInfo } = fRegister
-
+  const franchiseRegister = useSelector((state) => state.franchiseRegister);
+  const { fInfo } = franchiseRegister;
 
   useEffect(() => {
-    if (testInfo) {
-      navigate("/fprofile");
+    if (fInfo) {
+      navigate("/adminProfile");
     }
-  }, [testInfo,navigate]);
+  }, [fInfo,navigate]);
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
       toast.success("Password and Comfirm Password donot match");
       return;
     } else
-      dispatch(registerFranchise(name, email, password));
+      dispatch(FRegister(name, email, password));
     toast.success("Please Login");
   }
+
   return (
     <>
-    <div className="my-5">
-        <h1 className="text-center">Agent SignUp</h1>
+      <div className="my-5">
+        <h1 className="text-center">FRANCHISE SIGNUP</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -51,7 +52,7 @@ const FRegister = () => {
                     onChange={(e) => setName(e.target.value)}
                     className="form-control"
                     id="exampleFormControlInput1"
-                    placeholder="Ahsan Ejaz"
+                    placeholder="Name"
                   />
                 </div>
                 <div className="col-md-6 mb-3">
@@ -63,12 +64,10 @@ const FRegister = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     id="exampleFormControlInput2"
-                    placeholder="name@mail.com"
+                    placeholder="Email"
                   />
                 </div>
               </div>
-              
-            
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Password</label>
@@ -129,4 +128,4 @@ const FRegister = () => {
   )
 }
 
-export default FRegister
+export default FranchiseRegister
