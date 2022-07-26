@@ -38,6 +38,9 @@ import FRegister from "./Franchise/FRegister";
 import FProfile from "./Franchise/FProfile";
 import AdminDashboard from './Admin/AdminDashboard'
 import AdminProfile from './Admin/AdminProfile'
+import AdminSignUp from "./Admin/AdminSignUp";
+import AdminLogin from "./Admin/AdminLogin";
+import AllFranchises from "./Franchise/AllFranchises";
 
 const App = () => {
   return (
@@ -77,9 +80,12 @@ const App = () => {
         <Route path="/fregister" element={<FRegister />} />
         <Route path="/flogin" element={<FLogin />} />
         <Route path="/fprofile" element={<FProfile />} />
+        <Route path="/allFranchises" element={<AllFranchises />} />
 
 
         {/* Admin */}
+        <Route path="/adminRegister" element={<AdminSignUp />} />
+        <Route path="/adminLogin" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/adminProfile" element={<AdminProfile />} />
 

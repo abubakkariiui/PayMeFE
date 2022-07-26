@@ -47,7 +47,7 @@ const AdminDashboard = () => {
 
           <div className="col-2">
             <div className="card churai cd">
-              <NavLink to="">
+              <NavLink to="/allFranchises">
                 <img src={his} className="card-img-top" alt="/history" />{" "}
               </NavLink>
               <div className="card-body">

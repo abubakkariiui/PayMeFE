@@ -20,6 +20,7 @@ const Common =(props) =>{
                     </div>
                     <div className="margin">
                     <h3> Have an account? <NavLink to="/login" className="btn btn-secondary">Log In</NavLink> </h3>
+                    <h3> Login As Admin <NavLink to="/adminLogin" className="btn btn-secondary">Admin</NavLink> </h3>
                     </div>
                 </div>
                 <div className="col-lg-6 order-1 order-lg-2 header-img">

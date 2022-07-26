@@ -16,7 +16,7 @@ import {
       case AGENT_LOGIN_REQUEST:
         return { loading: true };
       case AGENT_LOGIN_SUCCESS:
-        return { loading: false, userInfo: action.payload };
+        return { loading: false, agentInfo: action.payload };
       case AGENT_LOGIN_FAIL:
         return { loading: false, error: action.payload };
       case AGENT_LOGOUT:
@@ -31,7 +31,7 @@ import {
       case AGENT_REGISTER_REQUEST:
         return { loading: true };
       case AGENT_REGISTER_SUCCESS:
-        return { loading: false, userInfo: action.payload };
+        return { loading: false, agentInfo: action.payload };
       case AGENT_REGISTER_FAIL:
         return { loading: false, error: action.payload };
       default:
@@ -44,7 +44,7 @@ import {
       case AGENT_UPDATE_REQUEST:
         return { loading: true };
       case AGENT_UPDATE_SUCCESS:
-        return { loading: false, userInfo: action.payload, success: true };
+        return { loading: false, agentInfo: action.payload, success: true };
       case AGENT_UPDATE_FAIL:
         return { loading: false, error: action.payload, success: false };
       default:
