@@ -36,6 +36,9 @@ import AgentList from "./Agent/AgentList";
 import FLogin from "./Franchise/FLogin";
 import FRegister from "./Franchise/FRegister";
 import FProfile from "./Franchise/FProfile";
+import AdminDashboard from './Admin/AdminDashboard'
+import AdminProfile from './Admin/AdminProfile'
+
 const App = () => {
   return (
     <>
@@ -74,6 +77,11 @@ const App = () => {
         <Route path="/fregister" element={<FRegister />} />
         <Route path="/flogin" element={<FLogin />} />
         <Route path="/fprofile" element={<FProfile />} />
+
+
+        {/* Admin */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/adminProfile" element={<AdminProfile />} />
 
         <Route path="*" element={<Home />} />
       </Routes>
