@@ -11,17 +11,20 @@ const AgentSignIn = () => {
   const dispatch = useDispatch();
 
   const agentLogin = useSelector((state) => state.agentLogin);
-  const { loading, error, agentInfo } = agentLogin;
+  const { agentInfo } = agentLogin;
   useEffect(() => {
     if (agentInfo) {
       localStorage.getItem('agentInfo');
       navigate("/agentProfile");
     }
-  }, [agentInfo]);
+  }, [agentInfo,navigate]);
 
   const submitHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     dispatch(loginAgent(email, password));
+    setTimeout(() => {
+      window.location.reload();
+    },1000)
   };
 
   return (

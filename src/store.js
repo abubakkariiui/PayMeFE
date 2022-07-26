@@ -11,6 +11,11 @@ import {
   agentRegisterReducer,
   agentUpdateReducer,
 } from "./reducers/agentReducers";
+import {
+  loginFranchise,
+  registerFranchise,
+  updateFranchiseProfile,
+} from "./actions/franchiseActions";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -19,20 +24,27 @@ const reducer = combineReducers({
   agentLogin: agentLoginReducer,
   agentRegister: agentRegisterReducer,
   agentUpdate: agentUpdateReducer,
+  fRegister: registerFranchise,
+  franchiseLogin: loginFranchise,
+  fUpdate: updateFranchiseProfile,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 
-
-  const agentInfoFromStorage = localStorage.getItem("agentInfo")
+const agentInfoFromStorage = localStorage.getItem("agentInfo")
   ? JSON.parse(localStorage.getItem("agentInfo"))
+  : null;
+
+const franchiseInfoFromStorage = localStorage.getItem("testInfo")
+  ? JSON.parse(localStorage.getItem("testInfo"))
   : null;
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
-  agentLogin: {agentInfo: agentInfoFromStorage}
+  agentLogin: { agentInfo: agentInfoFromStorage },
+  franchiseLogin: { testInfo: franchiseInfoFromStorage },
 };
 
 const middleware = [thunk];

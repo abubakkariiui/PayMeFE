@@ -14,14 +14,14 @@ const AgentSignup = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const agentRegister = useSelector((state) => state.agentRegister);
-  const { agentInfo } = agentRegister;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { agentInfo } = userRegister;
 
   useEffect(() => {
     if (agentInfo) {
       navigate("/agentProfile");
     }
-  }, [agentInfo]);
+  }, [agentInfo,navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
