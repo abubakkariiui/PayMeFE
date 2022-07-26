@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
+import { AccountantsLogout, updateAccountantsProfile } from '../actions/accountantActions';
 import { FLogout, updateFProfile } from '../actions/franchiseActions';
 
-const FranchiseProfile = () => {
+const AccountantProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,11 +16,11 @@ const FranchiseProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const franchiseLogin = useSelector((state) => state.franchiseLogin);
-  const { fInfo } = franchiseLogin;
+  const accountantLogin = useSelector((state) => state.accountantLogin);
+  const { accountantInfo } = accountantLogin;
 
-  const franchiseUpdate = useSelector((state) => state.franchiseUpdate);
-  const { loading, error, success } = franchiseUpdate;
+  const accountantUpdate = useSelector((state) => state.accountantUpdate);
+  const { loading, error, success } = accountantUpdate;
 
   const notify = () => {};
 
@@ -48,21 +49,21 @@ const FranchiseProfile = () => {
   };
 
   useEffect(() => {
-    if (fInfo) {
-      setName(fInfo.name);
-      setEmail(fInfo.email);
-      setPic(fInfo.pic);
+    if (accountantInfo) {
+      setName(accountantInfo.name);
+      setEmail(accountantInfo.email);
+      setPic(accountantInfo.pic);
     }
-  }, [fInfo,navigate]);
+  }, [accountantInfo,navigate]);
   
   const logoutHandler = () => {
-    dispatch(FLogout());
+    dispatch(AccountantsLogout());
     navigate("/");
   };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      updateFProfile({
+      updateAccountantsProfile({
         name,
         email,
         password,
@@ -72,7 +73,7 @@ const FranchiseProfile = () => {
     toast.success("Profile Updated Successfully");
     if (password == confirmPassword) {
       dispatch(
-        updateFProfile({
+        updateAccountantsProfile({
           password,
         })
       );
@@ -87,11 +88,11 @@ const FranchiseProfile = () => {
     <>
       <div className="mb-3">
         <div>
-          <NavLink   to="/franchise" style={{ marginLeft: 150 }}>
+          <NavLink   to="/accountant" style={{ marginLeft: 150 }}>
             Back
           </NavLink>
         </div>
-        <h1 className="text-center text-uppercase">Franchise Profile</h1>
+        <h1 className="text-center text-uppercase">Accountant Profile</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -191,4 +192,4 @@ const FranchiseProfile = () => {
   )
 }
 
-export default FranchiseProfile
+export default AccountantProfile

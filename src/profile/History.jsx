@@ -11,6 +11,9 @@ const History = () => {
   }, []);
   return (
     <>
+    <br />
+    <br />
+    <br />
       <div className="container">
         <table className="table table-hover">
           <thead>

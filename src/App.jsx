@@ -40,6 +40,15 @@ import AdminLogin from "./Admin/AdminLogin";
 import FranchiseRegister from "./Franchise/FranchiseRegister";
 import FranchiseLogin from "./Franchise/FranchiseLogin";
 import FranchiseProfile from "./Franchise/FranchiseProfile";
+import FranchiseDashboard from "./Franchise/FranchiseDashboard";
+import AccountantDashboard from "./Accountant/AccountantDashboard";
+import AccountantLogin from "./Accountant/AccountantLogin";
+import AccountantRegister from "./Accountant/AccountantRegister";
+import AccountantProfile from "./Accountant/AccountantProfile";
+import CSRDashboard from './CSR/CSRDashboard'
+import CSRRegister from './CSR/CSRRegister'
+import CSRProfile from './CSR/CSRProfile'
+import CSRLogin from './CSR/CSRLogin'
 
 const App = () => {
   return (
@@ -70,15 +79,28 @@ const App = () => {
         <Route path="/allAgents" element={<AgentList />} />
         <Route path="/sendMoney" element={<SendMoney />} />
         <Route path="/agentMoney" element={<AgentSendMoney />} />
-        <Route path="/Accountant" element={<Accountant />} />
+        <Route path="/AccountantList" element={<Accountant />} />
         <Route path="/accountHandler" element={<AccountHandler />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signin />} />
+
+        {/* CSR */}
+        <Route path="/csrDashboard" element={<CSRDashboard />} />
+        <Route path="/csrProfile" element={<CSRProfile />} />
+        <Route path="/csrRegister" element={<CSRRegister />} />
+        <Route path="/csrLogin" element={<CSRLogin />} />
 
         {/* Franchise */}
         <Route path="/franchiseRegister" element={<FranchiseRegister />} />
         <Route path="/franchiseLogin" element={<FranchiseLogin /> }/>
         <Route path="/franchiseProfile" element={<FranchiseProfile />} />
+        <Route path="/franchise" element={<FranchiseDashboard />} />
+
+        {/* Accountant */}
+        <Route path="/accountant" element={<AccountantDashboard />} />
+        <Route path="/accountantLogin" element={<AccountantLogin />} />
+        <Route path="/accountantRegister" element={<AccountantRegister />} />
+        <Route path="/accountantProfile" element={<AccountantProfile />} />
 
         {/* Admin */}
         <Route path="/adminRegister" element={<AdminSignUp />} />

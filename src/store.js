@@ -21,6 +21,16 @@ import {
   franchiseRegisterReducer,
   franchiseUpdateReducer,
 } from "./reducers/franchiseReducers";
+import {
+  accountantLoginReducer,
+  accountantRegisterReducer,
+  accountantUpdateReducer,
+} from "./reducers/accountantReducers";
+import {
+  csrLoginReducer,
+  csrRegisterReducer,
+  csrUpdateReducer,
+} from "./reducers/csrReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -35,6 +45,12 @@ const reducer = combineReducers({
   franchiseLogin: franchiseLoginReducer,
   franchiseRegister: franchiseRegisterReducer,
   franchiseUpdate: franchiseUpdateReducer,
+  accountantLogin: accountantLoginReducer,
+  accountantRegister: accountantRegisterReducer,
+  accountantUpdate: accountantUpdateReducer,
+  csrLogin: csrLoginReducer,
+  csrRegister: csrRegisterReducer,
+  csrUpdate: csrUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -51,12 +67,20 @@ const agentInfoFromStorage = localStorage.getItem("agentInfo")
 const franchiseInfoFromStorage = localStorage.getItem("fInfo")
   ? JSON.parse(localStorage.getItem("fInfo"))
   : null;
+const accountantInfoFromStorage = localStorage.getItem("accountantInfo")
+  ? JSON.parse(localStorage.getItem("accountantInfo"))
+  : null;
+const csrInfoFromStorage = localStorage.getItem("csrInfo")
+  ? JSON.parse(localStorage.getItem("csrInfo"))
+  : null;
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
   adminLogin: { adminInfo: adminInfoFromStorage },
   agentLogin: { agentInfo: agentInfoFromStorage },
   franchiseLogin: { fInfo: franchiseInfoFromStorage },
+  accountantLogin: { accountantInfo: accountantInfoFromStorage },
+  csrLogin: { csrInfo: csrInfoFromStorage },
 };
 
 const middleware = [thunk];

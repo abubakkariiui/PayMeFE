@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 const AgentList = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -11,9 +12,14 @@ const AgentList = () => {
 
   return (
     <>
+      <NavLink to="/franchise" style={{ marginLeft: 150 }}>
+        Back
+      </NavLink>
       <br />
       <br />
-      <h3 className="text-center"><u>AGENT LIST</u></h3>
+      <h3 className="text-center">
+        <u>AGENT LIST</u>
+      </h3>
       <br />
       <div className="container">
         <div className="row">

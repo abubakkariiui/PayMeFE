@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
+import { CSRsLogout, updateCSRsProfile } from '../actions/csrActions';
 import { FLogout, updateFProfile } from '../actions/franchiseActions';
 
-const FranchiseProfile = () => {
+const CSRProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,11 +16,11 @@ const FranchiseProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const franchiseLogin = useSelector((state) => state.franchiseLogin);
-  const { fInfo } = franchiseLogin;
+  const csrLogin = useSelector((state) => state.csrLogin);
+  const { csrInfo } = csrLogin;
 
-  const franchiseUpdate = useSelector((state) => state.franchiseUpdate);
-  const { loading, error, success } = franchiseUpdate;
+  const csrUpdate = useSelector((state) => state.csrUpdate);
+  const { loading, error, success } = csrUpdate;
 
   const notify = () => {};
 
@@ -48,21 +49,21 @@ const FranchiseProfile = () => {
   };
 
   useEffect(() => {
-    if (fInfo) {
-      setName(fInfo.name);
-      setEmail(fInfo.email);
-      setPic(fInfo.pic);
+    if (csrInfo) {
+      setName(csrInfo.name);
+      setEmail(csrInfo.email);
+      setPic(csrInfo.pic);
     }
-  }, [fInfo,navigate]);
+  }, [csrInfo,navigate]);
   
   const logoutHandler = () => {
-    dispatch(FLogout());
+    dispatch(CSRsLogout());
     navigate("/");
   };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      updateFProfile({
+      updateCSRsProfile({
         name,
         email,
         password,
@@ -72,7 +73,7 @@ const FranchiseProfile = () => {
     toast.success("Profile Updated Successfully");
     if (password == confirmPassword) {
       dispatch(
-        updateFProfile({
+        updateCSRsProfile({
           password,
         })
       );
@@ -87,11 +88,11 @@ const FranchiseProfile = () => {
     <>
       <div className="mb-3">
         <div>
-          <NavLink   to="/franchise" style={{ marginLeft: 150 }}>
+          <NavLink   to="/csrDashboard" style={{ marginLeft: 150 }}>
             Back
           </NavLink>
         </div>
-        <h1 className="text-center text-uppercase">Franchise Profile</h1>
+        <h1 className="text-center text-uppercase">CSR Profile</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -191,4 +192,4 @@ const FranchiseProfile = () => {
   )
 }
 
-export default FranchiseProfile
+export default CSRProfile

@@ -16,7 +16,7 @@ export const franchiseLoginReducer = (state = {}, action) => {
     case FRANCHISE_LOGIN_REQUEST:
       return { loading: true };
     case FRANCHISE_LOGIN_SUCCESS:
-      return { loading: false, userInfo: action.payload };
+      return { loading: false, fInfo: action.payload };
     case FRANCHISE_LOGIN_FAIL:
       return { loading: false, error: action.payload };
     case FRANCHISE_LOGOUT:
@@ -31,7 +31,7 @@ export const franchiseRegisterReducer = (state = {}, action) => {
     case FRANCHISE_REGISTER_REQUEST:
       return { loading: true };
     case FRANCHISE_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload };
+      return { loading: false, fInfo: action.payload };
     case FRANCHISE_REGISTER_FAIL:
       return { loading: false, error: action.payload };
     default:
@@ -44,7 +44,7 @@ export const franchiseUpdateReducer = (state = {}, action) => {
     case FRANCHISE_UPDATE_REQUEST:
       return { loading: true };
     case FRANCHISE_UPDATE_SUCCESS:
-      return { loading: false, userInfo: action.payload, success: true };
+      return { loading: false, fInfo: action.payload, success: true };
     case FRANCHISE_UPDATE_FAIL:
       return { loading: false, error: action.payload, success: false };
     default:

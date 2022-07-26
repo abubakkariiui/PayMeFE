@@ -64,7 +64,7 @@ export const FRegister =
       };
 
       const { data } = await axios.post(
-        "/api/franchiseRegister",
+        "/api/franchise/franchiseRegister",
         { name, email, password, pic },
         config
       );
