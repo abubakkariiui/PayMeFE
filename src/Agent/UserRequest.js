@@ -19,8 +19,7 @@ const UserRequest = () => {
                   <th scope="col">User Name</th>
                   <th scope="col">User Number</th>
                   <th scope="col">Amount</th>
-                  <th scope="col">Decline</th>
-                  <th scope="col">Approve</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -31,9 +30,7 @@ const UserRequest = () => {
                     <td>913</td>
                     <td>
                       <button className="btn btn-danger">Decline</button>
-                    </td>
-                    <td>
-                      <button className="btn btn-success">Approve</button>
+                      <button className="btn btn-success" style={{marginLeft: 10}}>Approve</button>
                     </td>
                   </tr>
               </tbody>

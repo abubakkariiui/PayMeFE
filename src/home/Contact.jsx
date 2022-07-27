@@ -57,6 +57,7 @@ const Contact = () => {
                   className="form-control"
                   id="exampleFormControlInput1"
                   placeholder="name@mail.com"
+                  required
                 />
               </div>
               <div className="mb-3">

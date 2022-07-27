@@ -15,6 +15,8 @@ const CsrList = () => {
         <table className="table table-bordered">
           <thead>
             <tr>
+              <th>ID</th>
+              <th>Name</th>
               <th>Query</th>
               <th>Description</th>
             </tr>
@@ -22,6 +24,8 @@ const CsrList = () => {
           {data.map((d) => (
             <tbody key={d._id}>
               <tr>
+                <th>1</th>
+                <th>test</th>
                 <th>{d.query}</th>
                 <td>{d.description}</td>
               </tr>
