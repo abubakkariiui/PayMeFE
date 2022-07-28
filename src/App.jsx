@@ -49,6 +49,10 @@ import CSRRegister from './CSR/CSRRegister'
 import CSRProfile from './CSR/CSRProfile'
 import CSRLogin from './CSR/CSRLogin'
 import Transfer from "./profile/Transfer";
+import AllFranchise from "./Franchise/AllFranchise";
+import AllCSR from "./CSR/AllCSR";
+import AllAccountant from "./Accountant/AllAccountant";
+import Common from "./Common";
 
 const App = () => {
   return (
@@ -83,24 +87,28 @@ const App = () => {
         <Route path="/accountHandler" element={<AccountHandler />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signin />} />
+        <Route path="/management" element={<Common />} />
 
         {/* CSR */}
         <Route path="/csrDashboard" element={<CSRDashboard />} />
         <Route path="/csrProfile" element={<CSRProfile />} />
         <Route path="/csrRegister" element={<CSRRegister />} />
         <Route path="/csrLogin" element={<CSRLogin />} />
+        <Route path="/allCSR" element={<AllCSR />} />
 
         {/* Franchise */}
         <Route path="/franchiseRegister" element={<FranchiseRegister />} />
         <Route path="/franchiseLogin" element={<FranchiseLogin /> }/>
         <Route path="/franchiseProfile" element={<FranchiseProfile />} />
         <Route path="/franchise" element={<FranchiseDashboard />} />
+        <Route path="/allFranchises" element={<AllFranchise />} />
 
         {/* Accountant */}
         <Route path="/accountant" element={<AccountantDashboard />} />
         <Route path="/accountantLogin" element={<AccountantLogin />} />
         <Route path="/accountantRegister" element={<AccountantRegister />} />
         <Route path="/accountantProfile" element={<AccountantProfile />} />
+        <Route path="/allAccountant" element={<AllAccountant />} />
 
         {/* Admin */}
         <Route path="/adminRegister" element={<AdminSignUp />} />

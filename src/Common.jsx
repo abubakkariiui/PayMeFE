@@ -1,39 +1,51 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-const Common =(props) =>{
-    return ( 
-    <>
-        <section id="header" className="row justify-content-md-center">
-        <div className="container-fluid ">
-            <div className= "row">
-                <div className="col-10 mx-auto">
-                <div className= "row">
-                <div className="col-md-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex justify-content-center flex-column">
-                    <h1>{props.intro} <strong className="brand-name">PayMe</strong></h1>
-                    <h2 className="my-3">
-                        Fintech based application for money transfer
-                    </h2>
-                    
-                    <div className="mt-3">
-                        <NavLink to={props.visit} className="btn-get-started" id="btn">{props.btname}</NavLink>
-                        
-                    </div>
-                    <div className="margin">
-                    <h3> Have an account? <NavLink to="/login" className="btn btn-secondary">Log In</NavLink> </h3>
-                    <h3> Login As Admin <NavLink to="/adminLogin" className="btn btn-secondary">Admin</NavLink> </h3>
-                    </div>
-                </div>
-                <div className="col-lg-6 order-1 order-lg-2 header-img">
-                    <img src={props.imgsrc} className="img-fluid animated" alt="common img"/> 
-                    
-                </div>
-                </div>
-                </div>
-            </div>
+const Common = () => {
+  return (
+    <div className="container" style={{ marginTop: 150 }}>
+      <div className="row">
+        <div className="col-md-3 text-center">
+          <h4>Login as Admin </h4>
+          <NavLink className="btn btn-success" to="/adminLogin">
+            Log in
+          </NavLink>
+          <h4>Register as Admin </h4>
+          <NavLink className="btn btn-success" to="/adminRegister">
+            Register
+          </NavLink>
         </div>
-        </section>
-    </>
-
-    );
+        <div className="col-md-3 text-center">
+          <h4>Login as Accountant </h4>
+          <NavLink className="btn btn-success" to="/accountantLogin">
+            Log in
+          </NavLink>
+          <h4>Register as Accountant</h4>
+          <NavLink className="btn btn-success" to="/accountantRegister">
+            Register
+          </NavLink>
+        </div>
+        <div className="col-md-3 text-center">
+          <h4>Login as CSR </h4>
+          <NavLink className="btn btn-success" to="/csrLogin">
+            Log in
+          </NavLink>
+          <h4>Register as CSR</h4>
+          <NavLink className="btn btn-success" to="/csrRegister">
+            Register
+          </NavLink>
+        </div>
+        <div className="col-md-3 text-center">
+        <h4>Login as  Franchise Manager</h4>
+          <NavLink className="btn btn-success" to="/franchiseLogin">
+            Log in
+          </NavLink>
+          <h4>Register as Franchise Manager</h4>
+          <NavLink className="btn btn-success" to="/franchiseRegister">
+            Register
+          </NavLink>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default Common;

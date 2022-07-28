@@ -26,7 +26,7 @@ const AdminDashboard = () => {
 
           <div className="col-2">
             <div className="card churai cd">
-              <NavLink to="#">
+              <NavLink to="/allAccountant">
                 <img src={his} className="card-img-top" alt="/history" />{" "}
               </NavLink>
               <div className="card-body">
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
           </div>
           <div className="col-2">
             <div className="card churai cd">
-              <NavLink to="#">
+              <NavLink to="/allCSR">
                 <img src={his} className="card-img-top" alt="/history" />{" "}
               </NavLink>
               <div className="card-body">
