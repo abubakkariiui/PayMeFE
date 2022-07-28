@@ -33,7 +33,7 @@ const sendMoney = () => {
                     <h4 className="card-text">
                       Transfer money from PayMe to another PayMe account.
                     </h4>
-                    <NavLink to="/transPayme" className="btn btn-secondary">
+                    <NavLink to="/transfer" className="btn btn-secondary">
                       PayMe transfer
                     </NavLink>
                   </div>

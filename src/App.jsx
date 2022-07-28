@@ -12,7 +12,6 @@ import Signin from "./home/Signin";
 import Profile from "./profile/Profile";
 import Wallet from "./profile/wallet";
 import History from "./profile/History";
-import TransPayme from "./profile/transPayme";
 import TransBank from "./profile/transBank";
 import TransAgent from "./profile/transAgent";
 import Tpin from "./profile/Tpin";
@@ -49,6 +48,7 @@ import CSRDashboard from './CSR/CSRDashboard'
 import CSRRegister from './CSR/CSRRegister'
 import CSRProfile from './CSR/CSRProfile'
 import CSRLogin from './CSR/CSRLogin'
+import Transfer from "./profile/Transfer";
 
 const App = () => {
   return (
@@ -72,7 +72,7 @@ const App = () => {
         <Route path="/userRequest" element={<UserRequest />} />
         <Route path="/Tpin" element={<Tpin />} />
         <Route path="/history" element={<History />} />
-        <Route path="/transPayme" element={<TransPayme />} />
+        <Route path="/transfer" element={<Transfer />} />
         <Route path="/transBank" element={<TransBank />} />
         <Route path="/CSR" element={<CSR />} />
         <Route path="/csrList" element={<CsrList />} />
