@@ -53,6 +53,7 @@ import AllFranchise from "./Franchise/AllFranchise";
 import AllCSR from "./CSR/AllCSR";
 import AllAccountant from "./Accountant/AllAccountant";
 import Common from "./Common";
+import AgentTransfer from "./profile/AgentTransfer";
 
 const App = () => {
   return (
@@ -68,7 +69,7 @@ const App = () => {
         <Route path="/service" element={<Service />} />
         <Route path="/agentRegister" element={<AgentSignup />} />
         <Route path="/agentLogin" element={<AgentSignIn />} />
-        <Route path="/transAgent" element={<TransAgent />} />
+        <Route path="/transAgent" element={<AgentTransfer />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/wallet" element={<Wallet />} />

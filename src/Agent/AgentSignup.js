@@ -11,6 +11,7 @@ const AgentSignup = () => {
   const [pranchiseName, setPranchiseName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
+  const [phone, setPhone] = useState()
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const AgentSignup = () => {
       toast.success("Password and Comfirm Password donot match");
       return;
     } else
-      dispatch(registerAgent(name, email, address, pranchiseName, password));
+      dispatch(registerAgent(name, email, address,phone, pranchiseName, password));
     toast.success("Please Login");
   };
 
@@ -77,6 +78,17 @@ const AgentSignup = () => {
                   onChange={(e) => setAddress(e.target.value)}
                   className="form-control"
                   placeholder="Lahore"
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Phone</label>
+                <input
+                  type="number"
+                  name="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="form-control"
+                  placeholder="00000000"
                 />
               </div>
               <div className="mb-3">

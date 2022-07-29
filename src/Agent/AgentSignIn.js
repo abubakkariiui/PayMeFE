@@ -22,9 +22,9 @@ const AgentSignIn = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginAgent(email, password));
-    setTimeout(() => {
-      window.location.reload();
-    },1000)
+    // setTimeout(() => {
+    //   window.location.reload();
+    // },1000)
   };
 
   return (

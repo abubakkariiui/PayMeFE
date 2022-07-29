@@ -1,7 +1,32 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import React from "react";
-
 const UserRequest = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`/api/payRequest/getRequest`)
+      .then((res) => {
+        setData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`/api/payRequest/${id}`)
+      .then((res) => {
+        console.log("data delete");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
 
   return (
     <>
@@ -10,33 +35,40 @@ const UserRequest = () => {
       <h3 className="text-center">User Payment Request</h3>
       <br />
       <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <table className="table table-image">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">User Name</th>
-                  <th scope="col">User Number</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>test</td>
-                    <td>Cristina</td>
-                    <td>913</td>
-                    <td>
-                      <button className="btn btn-danger">Decline</button>
-                      <button className="btn btn-success" style={{marginLeft: 10}}>Approve</button>
-                    </td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <table className="table table-image">
+          <thead>
+            <tr>
+              
+              <th scope="col" className="col-2">#</th>
+              <th scope="col" className="col-3">Name</th>
+              <th scope="col" className="col-3">Amount</th>
+              <th scope="col" className="col-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((d, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{d.name}</td>
+                <td>{d.amount}</td>
+                <td>
+                  <button
+                    className="btn btn-success"
+                    onClick={() => handleDelete(d._id)}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="btn btn-danger mx-3"
+                    onClick={() => handleDelete(d._id)}
+                  >
+                    Decline
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );

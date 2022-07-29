@@ -14,6 +14,7 @@ const AgentProfile = () => {
   const [picMessage, setPicMessage] = useState();
   const [city, setCity] = useState("");
   const [franchise, setFranchise] = useState("");
+  const [phone, setPhone] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -56,6 +57,7 @@ const AgentProfile = () => {
       setEmail(agentInfo.email);
       setPic(agentInfo.pic);
       setAddress(agentInfo.address);
+      setPhone(agentInfo.phone);
       setCity(agentInfo.city);
       setFranchise(agentInfo.pranchiseName);
     }
@@ -75,6 +77,7 @@ const AgentProfile = () => {
         password,
         pic,
         address,
+        phone,
         city,
       })
     );
@@ -87,7 +90,8 @@ const AgentProfile = () => {
           password,
           pic,
           address,
-          city
+          phone,
+          city,
         })
       );
       toast.success("Password Updated");
@@ -177,8 +181,20 @@ const AgentProfile = () => {
                 </div>
               </div>
               <div className="mb-3">
+                <label className="form-label">Phone</label>
+                <input
+                  type="number"
+                  name="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="form-control"
+                  placeholder="Franchise"
+                />
+              </div>
+              <div className="mb-3">
                 <label className="form-label">Franchise</label>
-                <input disabled
+                <input
+                  disabled
                   type="text"
                   name="franchise"
                   value={franchise}
