@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Transfer = () => {
-  const [receiverNumber, setReceiverNumber] = useState("");
-  const [amount, setAmount] = useState("");
+  const [receiverNumber, setReceiverNumber] = useState(0);
+  const [amount, setAmount] = useState(0);
   const [senderNumber, setSenderNumber] = useState();
   const [senderPhone, setSenderPhone] = useState();
 
   const submitHandler = (e) => {
-    const data = { receiverNumber, amount };
+    // const data = { receiverNumber, amount };
     e.preventDefault();
     axios
-      .post("/api/history/create", data)
+      .post("/api/history/create", { receiverNumber, amount })
       .then((res) => {
         console.log("test");
       })
@@ -27,7 +27,7 @@ const Transfer = () => {
         <div className="col-auto">
           <label className="form-label">Receiver Number</label>
           <input
-            type="text"
+            type="number"
             value={receiverNumber}
             name="receiverNumber"
             onChange={(e) => setReceiverNumber(e.target.value)}
@@ -38,7 +38,7 @@ const Transfer = () => {
         <div className="mb-3">
           <label className="form-label">Enter Amount</label>
           <input
-            type="text"
+            type="number"
             value={amount}
             name="amount"
             onChange={(e) => setAmount(e.target.value)}

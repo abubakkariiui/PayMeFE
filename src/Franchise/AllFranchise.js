@@ -28,8 +28,8 @@ const AllFranchise = () => {
             <table className="table table-image">
               <thead>
                 <tr>
-                  <th scope="col">Franchise Name</th>
-                  <th scope="col">Franchise Email</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
