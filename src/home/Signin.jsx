@@ -20,7 +20,7 @@ const Signin = () => {
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
 
-  const notify = () => toast.error("Something went wrong");
+  const notify = () => {};
   const dispatch = useDispatch();
 
   const userRegister = useSelector((state) => state.userRegister);
@@ -65,7 +65,7 @@ const Signin = () => {
     e.preventDefault();
 
     if (password !== confirmpassword) {
-      toast.error("Password and Confirm Password Donot Match");
+      toast.error("Password and Confirm Password Do not Match");
       return;
     } else
       dispatch(

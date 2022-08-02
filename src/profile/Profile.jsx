@@ -1,6 +1,5 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import dp from "../images/avatar.svg";
 import wallet from "../images/wallet-icon.svg";
 import cs from "../images/customer-service.svg";
 import his from "../images/history_icon.svg";
@@ -11,8 +10,8 @@ import { logout } from "../actions/userActions";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState('')
-  const [image, setImage] = useState('')
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,7 +25,7 @@ const Profile = () => {
       navigate("/");
     } else {
       setName(userInfo.name);
-      setImage(userInfo.pic)
+      setImage(userInfo.pic);
     }
   }, [userInfo]);
 
@@ -35,14 +34,19 @@ const Profile = () => {
     navigate("/");
   };
 
-
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid" style={{ margin: "100px 90px" }}>
         <div className="row">
           <div className="col-2">
             <div className="card churai cd">
-              <img src={image} className="card-img-top" alt="..." />
+              <img
+                src={image}
+                className="card-img-top"
+                width="180"
+                height="189"
+                alt="image"
+              />
               <div className="card-body text-center">
                 <h5 className="card-title text-uppercase">{name}</h5>
               </div>
@@ -91,60 +95,6 @@ const Profile = () => {
                 <h5 className="card-title text-center">Settings</h5>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <table className="table table-striped table-hover tablee">
-              <thead>
-                <tr>
-                  <th colSpan="4" className="table-dark text-center">
-                    Recent Activity
-                  </th>
-                </tr>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">deposit</th>
-                  <th scope="col">Sent</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>$200</td>
-                  <td>------</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>$30</td>
-                  <td>------</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Faizan</td>
-                  <td>------</td>
-                  <td>$111</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Ahsan</td>
-                  <td>------</td>
-                  <td>$1009</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Hammad</td>
-                  <td>------</td>
-                  <td>$9</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </div>

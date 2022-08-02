@@ -29,12 +29,12 @@ const History = () => {
         </thead>
         {data.map((d) => (
           <tbody>
-            <tr>
-              <th>{d.receverName}</th>
+            <tr key={d._id}>
+              <th>{d.receiverName}</th>
               <th>{d.senderName}</th>
               <th>{d.amount}</th>
-              <th>{d.receverPhone}</th>
-              <th>{d.senderPhone}</th>
+              <th>{d.receiverNumber}</th>
+              <th>{d.senderNumber}</th>
               <th>{d.createdAt}</th>
             </tr>
           </tbody>
