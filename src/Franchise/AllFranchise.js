@@ -11,6 +11,20 @@ const AllFranchise = () => {
     });
   }, []);
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`/api/franchise/${id}`)
+      .then((res) => {
+        console.log("data delete");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+
   return (
     <>
       <NavLink to="/admin" style={{ marginLeft: 150 }}>
@@ -39,7 +53,7 @@ const AllFranchise = () => {
                     <th scope="row">{d.name}</th>
                     <td>{d.email}</td>
                     <td>
-                      <button className="btn btn-danger">Delete</button>
+                      <button className="btn btn-danger" onClick={() => handleDelete(d._id)}>Delete</button>
                     </td>
                   </tr>
                 ))}
