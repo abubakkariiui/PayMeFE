@@ -10,6 +10,20 @@ const AgentList = () => {
     });
   }, []);
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`/api/agent/${id}`)
+      .then((res) => {
+        console.log("data delete");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
+
   return (
     <>
       <NavLink to="/franchise" style={{ marginLeft: 150 }}>
@@ -42,7 +56,12 @@ const AgentList = () => {
                     <td>{d.address}</td>
                     <td>{d.pranchiseName}</td>
                     <td>
-                      <button className="btn btn-danger">Delete</button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDelete(d._id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}

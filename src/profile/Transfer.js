@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const Transfer = () => {
-  const [receiverNumber, setReceiverNumber] = useState(0);
+  const [receiverNumber, setReceiverNumber] = useState();
   const [amount, setAmount] = useState(0);
   const [senderNumber, setSenderNumber] = useState();
-  const [senderName, setSenderName] = useState("");
-  const [receiverName, setReceiverName] = useState("");
+  const [senderName, setSenderName] = useState();
+  const [receiverName, setReceiverName] = useState();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -85,7 +85,7 @@ const Transfer = () => {
         <div className="mb-3">
           <label className="form-label">Sender Number</label>
           <input
-            type="text"
+            type="Number"
             value={senderNumber}
             name="senderNumber"
             disabled

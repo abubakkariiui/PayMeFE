@@ -7,7 +7,7 @@ import setting from "../images/settings.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
-
+import RecentActivity from './RecentActivity'
 const Profile = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -36,7 +36,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="container-fluid" style={{ margin: "100px 90px" }}>
+      <div className="container-fluid" style={{ margin: "0px 90px" }}>
         <div className="row">
           <div className="col-2">
             <div className="card churai cd">
@@ -98,6 +98,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <RecentActivity />
     </>
   );
 };
