@@ -17,15 +17,17 @@ const CsrList = () => {
             <tr>
               <th>ID</th>
               <th>Name</th>
+              <th>Phone</th>
               <th>Query</th>
               <th>Description</th>
             </tr>
           </thead>
-          {data.map((d) => (
+          {data.map((d,index) => (
             <tbody key={d._id}>
               <tr>
-                <th>1</th>
-                <th>test</th>
+                <th>{index + 1}</th>
+                <th>{d.name}</th>
+                <th>{d.phone}</th>
                 <th>{d.query}</th>
                 <td>{d.description}</td>
               </tr>

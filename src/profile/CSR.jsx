@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 const CSR = () => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState();
   const [query, setQuery] = useState("");
   const [description, setDescription] = useState("");
 
   const submitHandler = (e) => {
-    const data = { query, description };
+    const data = { name, phone, query, description };
     axios
       .post("/api/csr/create", data)
       .then(() => {
@@ -26,6 +28,30 @@ const CSR = () => {
     <>
       <form className="container" onSubmit={submitHandler}>
         <h2 className="text-center">Customer Service Representative</h2>
+        <div className="mb-3">
+          <label className="form-label">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            required
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+            placeholder="Enter Your Name"
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Phone</label>
+          <input
+            type="number"
+            name="phone"
+            value={phone}
+            required
+            onChange={(e) => setPhone(e.target.value)}
+            className="form-control"
+            placeholder="Enter Your Phone"
+          />
+        </div>
         <div className="mb-3">
           <label className="form-label">Query</label>
           <input
@@ -50,10 +76,7 @@ const CSR = () => {
             placeholder="What's your Query?"
           ></textarea>
         </div>
-        <button
-          type="submit"
-          className="btn btn-secondary"
-        >
+        <button type="submit" className="btn btn-secondary">
           Submit
         </button>
       </form>

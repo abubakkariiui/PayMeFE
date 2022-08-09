@@ -12,8 +12,6 @@ import Signin from "./home/Signin";
 import Profile from "./profile/Profile";
 import Wallet from "./profile/wallet";
 import History from "./profile/History";
-import TransBank from "./profile/transBank";
-import TransAgent from "./profile/transAgent";
 import Tpin from "./profile/Tpin";
 import CSR from "./profile/CSR";
 import SendMoney from "./profile/sendMoney";
@@ -56,6 +54,7 @@ import Common from "./Common";
 import AgentTransfer from "./profile/AgentTransfer";
 import TransferAgent from "./Agent/TransferAgent";
 import MoneyFranchise from "./Franchise/MoneyFranchise";
+import BankTransfer from "./profile/BankTransfer";
 
 const App = () => {
   return (
@@ -80,7 +79,7 @@ const App = () => {
         <Route path="/Tpin" element={<Tpin />} />
         <Route path="/history" element={<History />} />
         <Route path="/transfer" element={<Transfer />} />
-        <Route path="/transBank" element={<TransBank />} />
+        <Route path="/bankTransfer" element={<BankTransfer />} />
         <Route path="/CSR" element={<CSR />} />
         <Route path="/csrList" element={<CsrList />} />
         <Route path="/allAgents" element={<AgentList />} />

@@ -34,7 +34,7 @@ const AgentDashboard = () => {
 
   return (
     <>
-      <div className="container-fluid" style={{ margin: "100px 90px" }}>
+      <div className="container-fluid" style={{ margin: "100px -25px" }}>
         <div className="row">
           <div className="col-2">
             <div className="card churai cd">
@@ -69,6 +69,17 @@ const AgentDashboard = () => {
               </NavLink>
               <div className="card-body">
                 <h5 className="card-title text-center">User Request</h5>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-2">
+            <div className="card churai cd">
+              <NavLink to="/CSR">
+                <img src={cs} className="card-img-top" alt="..." />
+              </NavLink>
+              <div className="card-body">
+                <h5 className="card-title text-center">CSR</h5>
               </div>
             </div>
           </div>
