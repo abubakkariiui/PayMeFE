@@ -36,6 +36,7 @@ const AgentTransfer = () => {
             type="text"
             name="name"
             value={name}
+            required
             onChange={(e) => setName(e.target.value)}
             className="form-control"
             placeholder="Enter Name"
@@ -47,6 +48,7 @@ const AgentTransfer = () => {
             type="text"
             name="userNumber"
             value={userNumber}
+            required
             onChange={(e) => setUserNumber(e.target.value)}
             className="form-control"
             placeholder="Enter User Number"
@@ -59,6 +61,7 @@ const AgentTransfer = () => {
               type="text"
               name="amount"
               value={amount}
+              required
               onChange={(e) => setAmount(e.target.value)}
               className="form-control"
               placeholder="Enter amount to transfer"

@@ -47,7 +47,7 @@ const Transfer = () => {
   return (
     <>
       <form className="container" onSubmit={submitHandler}>
-        <h2 className="text-center">PAYME to PayMe Transfer</h2>
+        <h2 className="text-center">PAYMENT TRANSFER</h2>
         <div className="mb-3">
           <label className="form-label">Receiver Name</label>
           <input
@@ -56,6 +56,7 @@ const Transfer = () => {
             value={receiverName}
             className="form-control"
             id="receiverName"
+            required
             placeholder="Enter Receiver Name"
             onChange={(e) => setReceiverName(e.target.value)}
           />
@@ -68,6 +69,7 @@ const Transfer = () => {
             name="receiverNumber"
             onChange={(e) => setReceiverNumber(e.target.value)}
             className="form-control"
+            required
             placeholder="Enter reciver's number"
           />
         </div>
@@ -77,6 +79,7 @@ const Transfer = () => {
             type="number"
             value={amount}
             name="amount"
+            required
             onChange={(e) => setAmount(e.target.value)}
             className="form-control"
             placeholder="Enter amount to transfer"

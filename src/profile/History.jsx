@@ -25,9 +25,9 @@ const History = () => {
             <tr>
               <th scope="col">Recever Name</th>
               <th scope="col">SenderName</th>
-              <th scope="col">Amount</th>
               <th scope="col">Receiver Phone</th>
               <th scope="col">Sender Phone</th>
+              <th scope="col">Amount</th>
               <th scope="col">Date</th>
             </tr>
           </thead>
@@ -36,9 +36,9 @@ const History = () => {
               <tr key={d._id}>
               <th>{d.receiverName}</th>
               <th>{d.senderName}</th>
-              <th>{d.amount}</th>
               <th>{d.receiverNumber}</th>
               <th>{d.senderNumber}</th>
+              <th>{d.amount}</th>
               <th>{d.createdAt.toString()}</th>
               </tr>
             </tbody>

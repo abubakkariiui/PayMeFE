@@ -25,7 +25,6 @@ const FranchiseDashboard = () => {
       <div className="container-fluid" style={{margin: '100px 0px'}}>
         <div className="row">
           <div className="col-2"></div>
-          <div className="col-1"></div>
           <div className="col-2">
             <div className="card churai cd">
               <img src={pic} className="card-img-top" width="180" height="186" alt="image" />
@@ -35,6 +34,16 @@ const FranchiseDashboard = () => {
             </div>
           </div>
 
+          <div className="col-2">
+            <div className="card churai cd">
+              <NavLink to="/franchiseAgent">
+                <img src={wallet} className="card-img-top" alt="img" />{" "}
+              </NavLink>
+              <div className="card-body">
+                <h5 className="card-title text-center">Wallet</h5>
+              </div>
+            </div>
+          </div>
           <div className="col-2">
             <div className="card churai cd">
               <NavLink to="/allAgents">

@@ -54,6 +54,8 @@ import AllCSR from "./CSR/AllCSR";
 import AllAccountant from "./Accountant/AllAccountant";
 import Common from "./Common";
 import AgentTransfer from "./profile/AgentTransfer";
+import TransferAgent from "./Agent/TransferAgent";
+import MoneyFranchise from "./Franchise/MoneyFranchise";
 
 const App = () => {
   return (
@@ -89,6 +91,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signin />} />
         <Route path="/management" element={<Common />} />
+        <Route path="/tansferAgent" element={<TransferAgent />} />
 
         {/* CSR */}
         <Route path="/csrDashboard" element={<CSRDashboard />} />
@@ -103,6 +106,7 @@ const App = () => {
         <Route path="/franchiseProfile" element={<FranchiseProfile />} />
         <Route path="/franchise" element={<FranchiseDashboard />} />
         <Route path="/allFranchises" element={<AllFranchise />} />
+        <Route path="/franchiseAgent" element={<MoneyFranchise />} />
 
         {/* Accountant */}
         <Route path="/accountant" element={<AccountantDashboard />} />
