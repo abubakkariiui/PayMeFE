@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
-import { toast, ToastContainer } from 'react-toastify'
-import { AccountantsRegister } from '../actions/accountantActions'
-import { FRegister } from '../actions/franchiseActions'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
+import { AccountantsRegister } from "../actions/accountantActions";
+import { FRegister } from "../actions/franchiseActions";
 
 const AccountantRegister = () => {
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-
+  const [cnic, setCnic] = useState();
+  const [backCNIC, setBackCNIC] = useState();
+  const [frontCNIC, setFrontCNIC] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,17 +23,16 @@ const AccountantRegister = () => {
     if (accountantInfo) {
       navigate("/accountantProfile");
     }
-  }, [accountantInfo,navigate]);
+  }, [accountantInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
       toast.success("Password and Comfirm Password donot match");
       return;
-    } else
-      dispatch(AccountantsRegister(name, email, password));
+    } else dispatch(AccountantsRegister(name, email, password));
     toast.success("Please Login");
-  }
+  };
 
   return (
     <>
@@ -69,6 +69,17 @@ const AccountantRegister = () => {
                   />
                 </div>
               </div>
+              <div>
+                <label className="form-label">CNIC</label>
+                <input
+                  type="number"
+                  name="cnic"
+                  value={cnic}
+                  onChange={(e) => setCnic(e.target.value)}
+                  className="form-control"
+                  placeholder="CNIC"
+                />
+              </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Password</label>
@@ -81,11 +92,6 @@ const AccountantRegister = () => {
                     className="form-control"
                     aria-describedby="passwordHelpBlock"
                   />
-                  <div id="passwordHelpBlock" className="form-text">
-                    Your password must be 8-20 characters long, contain letters
-                    and numbers, and must not contain spaces, special
-                    characters, or emoji.
-                  </div>
                 </div>
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Confirm Password</label>
@@ -97,6 +103,28 @@ const AccountantRegister = () => {
                     className="form-control"
                     id="exampleInputPassword1"
                   />
+                </div>
+                <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <label className="form-label">Front Image Of CNIC</label>
+                    <input
+                      type="file"
+                      name="frontCNIC"
+                      value={frontCNIC}
+                      onChange={(e) => setFrontCNIC(e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label className="form-label">Back Image Of CNIC</label>
+                    <input
+                      type="file"
+                      name="backCNIC"
+                      value={backCNIC}
+                      onChange={(e) => setBackCNIC(e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="row">
@@ -126,7 +154,7 @@ const AccountantRegister = () => {
       </div>
       <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default AccountantRegister
+export default AccountantRegister;

@@ -16,6 +16,8 @@ const Signin = () => {
   const [phone, setPhone] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [cnic, setCnic] = useState("");
+  const [backCNIC, setBackCNIC] = useState()
+  const [frontCNIC, setFrontCNIC] = useState()
   const [pic, setPic] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
@@ -170,7 +172,7 @@ const Signin = () => {
                 </div>
               </div>
               <div className="row">
-                <div className="mb-3">
+                <div className="mb-3 col-md-6">
                   <label className="form-label">CNIC</label>
                   <input
                     type="number"
@@ -179,6 +181,15 @@ const Signin = () => {
                     onChange={(e) => setCnic(e.target.value)}
                     className="form-control"
                     placeholder="CNIC"
+                  />
+                </div>
+                <div className="mb-3 col-md-6">
+                  <label className="form-label">DOB</label>
+                  <input
+                    type="date"
+                    name="dob"
+                    className="form-control"
+                    placeholder="DOB"
                   />
                 </div>
               </div>
@@ -204,6 +215,28 @@ const Signin = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="form-control"
                     placeholder="Confirm Password"
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                <label className="form-label">Front Image Of CNIC</label>
+                  <input
+                    type="file"
+                    name="frontCNIC"
+                    value={frontCNIC}
+                    onChange={(e) => setFrontCNIC(e.target.value)}
+                    className="form-control"
+                  />
+                </div>
+                <div className="col-md-6 mb-3">
+                <label className="form-label">Back Image Of CNIC</label>
+                  <input
+                    type="file"
+                    name="backCNIC"
+                    value={backCNIC}
+                    onChange={(e) => setBackCNIC(e.target.value)}
+                    className="form-control"
                   />
                 </div>
               </div>

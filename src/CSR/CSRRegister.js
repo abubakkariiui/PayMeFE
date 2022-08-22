@@ -10,7 +10,9 @@ const CSRRegister = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmpassword, setConfirmPassword] = useState("");
-
+  const [cnic, setCnic] = useState()
+  const [backCNIC, setBackCNIC] = useState()
+  const [frontCNIC, setFrontCNIC] = useState()
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -68,6 +70,17 @@ const CSRRegister = () => {
                   />
                 </div>
               </div>
+              <div>
+                <label className="form-label">CNIC</label>
+                <input
+                  type="number"
+                  name="cnic"
+                  value={cnic}
+                  onChange={(e) => setCnic(e.target.value)}
+                  className="form-control"
+                  placeholder="CNIC"
+                />
+              </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Password</label>
@@ -80,11 +93,6 @@ const CSRRegister = () => {
                     className="form-control"
                     aria-describedby="passwordHelpBlock"
                   />
-                  <div id="passwordHelpBlock" className="form-text">
-                    Your password must be 8-20 characters long, contain letters
-                    and numbers, and must not contain spaces, special
-                    characters, or emoji.
-                  </div>
                 </div>
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Confirm Password</label>
@@ -98,6 +106,28 @@ const CSRRegister = () => {
                   />
                 </div>
               </div>
+              <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <label className="form-label">Front Image Of CNIC</label>
+                    <input
+                      type="file"
+                      name="frontCNIC"
+                      value={frontCNIC}
+                      onChange={(e) => setFrontCNIC(e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label className="form-label">Back Image Of CNIC</label>
+                    <input
+                      type="file"
+                      name="backCNIC"
+                      value={backCNIC}
+                      onChange={(e) => setBackCNIC(e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
+                </div>
               <div className="row">
                 <div className="col-md-10 mb-3 form-check">
                   <input
