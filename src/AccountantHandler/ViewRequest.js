@@ -1,6 +1,14 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const ViewRequest = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios.get("/api/users/getAllUser").then((res) => {
+      setData(res.data);
+    });
+  }, []);
+
   return (
     <>
       <br />
@@ -21,13 +29,17 @@ const ViewRequest = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">test</th>
-                  <td>test@gmail.com</td>
-                  <td>
-                    <button className="btn btn-info">View</button>
-                  </td>
-                </tr>
+                {data.map((d) => (
+                  <tr key={d._id}>
+                    <th scope="row">{d.name}</th>
+                    <td>{d.email}</td>
+                    <td>
+                      <Link to={`/users/${d._id}`}>
+                        <button className="btn btn-info mx-3">View</button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

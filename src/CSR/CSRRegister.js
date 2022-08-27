@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { toast, ToastContainer } from 'react-toastify'
 import { CSRsRegister } from '../actions/csrActions'
-
+import './Register.css'
 const CSRRegister = () => {
 
   const [name, setName] = useState('')
@@ -109,23 +109,27 @@ const CSRRegister = () => {
               <div className="row">
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Front Image Of CNIC</label>
-                    <input
-                      type="file"
-                      name="frontCNIC"
-                      value={frontCNIC}
-                      onChange={(e) => setFrontCNIC(e.target.value)}
-                      className="form-control"
-                    />
+                    <span>
+                      <input
+                        type="file"
+                        name="frontCNIC"
+                        value={frontCNIC}
+                        onChange={(e) => setFrontCNIC(e.target.value)}
+                        className="form-control"
+                      />
+                    </span>
                   </div>
                   <div className="col-md-6 mb-3">
                     <label className="form-label">Back Image Of CNIC</label>
-                    <input
-                      type="file"
-                      name="backCNIC"
-                      value={backCNIC}
-                      onChange={(e) => setBackCNIC(e.target.value)}
-                      className="form-control"
-                    />
+                    <span>
+                      <input
+                        type="file"
+                        name="backCNIC"
+                        value={backCNIC}
+                        onChange={(e) => setBackCNIC(e.target.value)}
+                        className="form-control"
+                      />
+                    </span>
                   </div>
                 </div>
               <div className="row">

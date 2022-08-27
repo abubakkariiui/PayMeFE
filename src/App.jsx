@@ -60,6 +60,7 @@ import AccountHandlerLogin from "./AccountantHandler/AccountHandlerLogin";
 import AccountHandlerDashboard from "./AccountantHandler/AccountHandlerDashboard";
 import AccountHandlerProfile from "./AccountantHandler/AccountHandlerProfile";
 import ViewRequest from "./AccountantHandler/ViewRequest";
+import UserDetail from "./AccountantHandler/UserDetail";
 
 const App = () => {
   return (
@@ -104,6 +105,7 @@ const App = () => {
         <Route path="/handlerDashboard" element={<AccountHandlerDashboard />} />
         <Route path="/handlerProfile" element={<AccountHandlerProfile />} />
         <Route path="/viewRequest" element={<ViewRequest />} />
+        <Route path="/users/:id" element={<UserDetail />} />
 
         {/* CSR */}
         <Route path="/csrDashboard" element={<CSRDashboard />} />
