@@ -3,28 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
-import { AccountantsLogout, updateAccountantsProfile } from '../actions/accountantActions';
-import { FLogout, updateFProfile } from '../actions/franchiseActions';
+import { HandlerLogout, updateHandlerProfile } from '../actions/handlerActions';
 
-const AccountantProfile = () => {
+const AccountHandlerProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [pic, setPic] = useState("");
-  const [frontCNIC, setFrontCNIC] = useState()
-  const [backCNIC, setBackCNIC] = useState()
   const [picMessage, setPicMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const accountantLogin = useSelector((state) => state.accountantLogin);
-  const { accountantInfo } = accountantLogin;
+  const handlerLogin = useSelector((state) => state.handlerLogin);
+  const { handlerInfo } = handlerLogin;
 
-  const accountantUpdate = useSelector((state) => state.accountantUpdate);
-  const { loading, error, success } = accountantUpdate;
+  const handlerUpdate = useSelector((state) => state.handlerUpdate);
+  const { loading, error, success } = handlerUpdate;
 
-  const notify = () => {};
+  const notify = () => { };
 
   const postDetails = (pics) => {
     setPicMessage(null);
@@ -51,23 +48,21 @@ const AccountantProfile = () => {
   };
 
   useEffect(() => {
-    if (accountantInfo) {
-      setName(accountantInfo.name);
-      setEmail(accountantInfo.email);
-      setPic(accountantInfo.pic);
-      setBackCNIC(accountantInfo.backCNIC)
-      setFrontCNIC(accountantInfo.frontCNIC)
+    if (handlerInfo) {
+      setName(handlerInfo.name);
+      setEmail(handlerInfo.email);
+      setPic(handlerInfo.pic);
     }
-  }, [accountantInfo,navigate]);
-  
+  }, [handlerInfo, navigate]);
+
   const logoutHandler = () => {
-    dispatch(AccountantsLogout());
+    dispatch(HandlerLogout());
     navigate("/");
   };
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      updateAccountantsProfile({
+      updateHandlerProfile({
         name,
         email,
         password,
@@ -77,7 +72,7 @@ const AccountantProfile = () => {
     toast.success("Profile Updated Successfully");
     if (password == confirmPassword) {
       dispatch(
-        updateAccountantsProfile({
+        updateHandlerProfile({
           password,
         })
       );
@@ -92,11 +87,11 @@ const AccountantProfile = () => {
     <>
       <div className="mb-3">
         <div>
-          <NavLink   to="/accountant" style={{ marginLeft: 150 }}>
+          <NavLink to="/handlerDashboard" style={{ marginLeft: 150 }}>
             Back
           </NavLink>
         </div>
-        <h1 className="text-center text-uppercase">Accountant Profile</h1>
+        <h1 className="text-center text-uppercase">Account Handler Profile</h1>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -196,4 +191,4 @@ const AccountantProfile = () => {
   )
 }
 
-export default AccountantProfile
+export default AccountHandlerProfile

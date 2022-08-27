@@ -31,6 +31,11 @@ import {
   csrRegisterReducer,
   csrUpdateReducer,
 } from "./reducers/csrReducers";
+import {
+  handlerLoginReducer,
+  handlerRegisterReducer,
+  handlerUpdateReducer
+} from "./reducers/handlerReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -51,6 +56,9 @@ const reducer = combineReducers({
   csrLogin: csrLoginReducer,
   csrRegister: csrRegisterReducer,
   csrUpdate: csrUpdateReducer,
+  handlerLogin: handlerLoginReducer,
+  handlerRegister: handlerRegisterReducer,
+  handlerUpdate: handlerUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -73,6 +81,9 @@ const accountantInfoFromStorage = localStorage.getItem("accountantInfo")
 const csrInfoFromStorage = localStorage.getItem("csrInfo")
   ? JSON.parse(localStorage.getItem("csrInfo"))
   : null;
+const handlerInfoFromStorage = localStorage.getItem("handlerInfo")
+  ? JSON.parse(localStorage.getItem("handlerInfo"))
+  : null;
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
@@ -81,6 +92,7 @@ const initialState = {
   franchiseLogin: { fInfo: franchiseInfoFromStorage },
   accountantLogin: { accountantInfo: accountantInfoFromStorage },
   csrLogin: { csrInfo: csrInfoFromStorage },
+  handlerLogin: { handlerInfo: handlerInfoFromStorage },
 };
 
 const middleware = [thunk];

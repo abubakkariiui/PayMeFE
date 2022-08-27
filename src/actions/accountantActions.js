@@ -52,7 +52,7 @@ export const AccountantsLogout = () => async (dispatch) => {
 // Register
 
 export const AccountantsRegister =
-  (name, email, password, pic) => async (dispatch) => {
+  (name, email, password, frontCNIC, backCNIC, pic) => async (dispatch) => {
     try {
       dispatch({ type: ACCOUNTANT_REGISTER_REQUEST });
 
@@ -64,7 +64,7 @@ export const AccountantsRegister =
 
       const { data } = await axios.post(
         "/api/accountant/accountantRegister",
-        { name, email, password, pic },
+        { name, email, password, frontCNIC, backCNIC, pic },
         config
       );
 

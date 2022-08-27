@@ -55,6 +55,11 @@ import AgentTransfer from "./profile/AgentTransfer";
 import TransferAgent from "./Agent/TransferAgent";
 import MoneyFranchise from "./Franchise/MoneyFranchise";
 import BankTransfer from "./profile/BankTransfer";
+import AccountHandlerRegister from "./AccountantHandler/AccountHandlerRegister";
+import AccountHandlerLogin from "./AccountantHandler/AccountHandlerLogin";
+import AccountHandlerDashboard from "./AccountantHandler/AccountHandlerDashboard";
+import AccountHandlerProfile from "./AccountantHandler/AccountHandlerProfile";
+import ViewRequest from "./AccountantHandler/ViewRequest";
 
 const App = () => {
   return (
@@ -91,6 +96,14 @@ const App = () => {
         <Route path="/signup" element={<Signin />} />
         <Route path="/management" element={<Common />} />
         <Route path="/tansferAgent" element={<TransferAgent />} />
+
+        {/* AccountHandler */}
+
+        <Route path="/handlerRegister" element={<AccountHandlerRegister />} />
+        <Route path="/handlerLogin" element={<AccountHandlerLogin />} />
+        <Route path="/handlerDashboard" element={<AccountHandlerDashboard />} />
+        <Route path="/handlerProfile" element={<AccountHandlerProfile />} />
+        <Route path="/viewRequest" element={<ViewRequest />} />
 
         {/* CSR */}
         <Route path="/csrDashboard" element={<CSRDashboard />} />
