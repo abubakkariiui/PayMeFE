@@ -10,44 +10,34 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [picMessage, setPicMessage] = useState(null);
   const [city, setCity] = useState("");
+  const [picMessage, setPicMessage] = useState("");
+  const [picMessage1, setPicMessage1] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [cnic, setCnic] = useState("");
-  const [backCNIC, setBackCNIC] = useState()
-  const [frontCNIC, setFrontCNIC] = useState()
+  const [backCNIC, setBackCNIC] = useState();
+  const [frontCNIC, setFrontCNIC] = useState();
   const [pic, setPic] = useState(
     "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
   );
 
-  const notify = () => {};
-  const dispatch = useDispatch();
-
-  const userRegister = useSelector((state) => state.userRegister);
-  const { userInfo } = userRegister;
-
   const postDetails = (pics) => {
-    if (
-      pics ===
-      "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-    ) {
-      return setPicMessage("Please Select an Image");
-    }
     setPicMessage(null);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
       data.append("upload_preset", "notezipper");
-      data.append("cloud_name", "dbtpphioo");
-      fetch("https://api.cloudinary.com/v1_1/dbtpphioo/image/upload", {
+      data.append("cloud_name", "piyushproj");
+      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
         method: "post",
         body: data,
       })
         .then((res) => res.json())
         .then((data) => {
-          setPic(data.url.toString());
+          setFrontCNIC(data.url.toString());
+          toast.success("Image Uploaded");
         })
         .catch((err) => {
           console.log(err);
@@ -56,6 +46,37 @@ const Signin = () => {
       return setPicMessage("Please Select an Image");
     }
   };
+  
+  const postDetails1 = (pics) => {
+    setPicMessage1(null);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "notezipper");
+      data.append("cloud_name", "piyushproj");
+      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setBackCNIC(data.url.toString());
+          toast.success("Image Uploaded");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage1("Please Select an Image");
+    }
+  };
+
+  const notify = () => {};
+  const dispatch = useDispatch();
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { userInfo } = userRegister;
+
 
   useEffect(() => {
     if (userInfo) {
@@ -80,7 +101,9 @@ const Signin = () => {
           city,
           postalCode,
           address,
-          cnic
+          cnic,
+          frontCNIC,
+          backCNIC
         )
       );
   };
@@ -220,24 +243,28 @@ const Signin = () => {
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                <label className="form-label">Front Image Of CNIC</label>
-                  <input
-                    type="file"
-                    name="frontCNIC"
-                    value={frontCNIC}
-                    onChange={(e) => setFrontCNIC(e.target.value)}
-                    className="form-control"
-                  />
+                  <label className="form-label">Front Image Of CNIC</label>
+                  <span>
+                    <input
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                      onChange={(e) => postDetails(e.target.files[0])}
+                      accept=".png, .jpg, .jpeg"
+                    />
+                  </span>
                 </div>
                 <div className="col-md-6 mb-3">
-                <label className="form-label">Back Image Of CNIC</label>
-                  <input
-                    type="file"
-                    name="backCNIC"
-                    value={backCNIC}
-                    onChange={(e) => setBackCNIC(e.target.value)}
-                    className="form-control"
-                  />
+                  <label className="form-label">Back Image Of CNIC</label>
+                  <span>
+                    <input
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                      onChange={(e) => postDetails1(e.target.files[0])}
+                      accept=".png, .jpg, .jpeg"
+                    />
+                  </span>
                 </div>
               </div>
               <div className="mb-3 form-check">
