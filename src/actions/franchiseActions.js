@@ -52,8 +52,7 @@ export const FLogout = () => async (dispatch) => {
 // Register
 
 export const FRegister =
-  (name, email, password, pic) =>
-  async (dispatch) => {
+  (name, email, password, frontCNIC, backCNIC, pic) => async (dispatch) => {
     try {
       dispatch({ type: FRANCHISE_REGISTER_REQUEST });
 
@@ -65,7 +64,7 @@ export const FRegister =
 
       const { data } = await axios.post(
         "/api/franchise/franchiseRegister",
-        { name, email, password, pic },
+        { name, email, password, frontCNIC, backCNIC, pic },
         config
       );
 
@@ -101,7 +100,11 @@ export const updateFProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/franchise/franchiseProfile", user, config);
+    const { data } = await axios.post(
+      "/api/franchise/franchiseProfile",
+      user,
+      config
+    );
 
     dispatch({ type: FRANCHISE_UPDATE_SUCCESS, payload: data });
 

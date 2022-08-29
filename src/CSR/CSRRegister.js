@@ -1,20 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
-import { toast, ToastContainer } from 'react-toastify'
-import { CSRsRegister } from '../actions/csrActions'
-import './Register.css'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
+import { CSRsRegister } from "../actions/csrActions";
+import "./Register.css";
 const CSRRegister = () => {
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [picMessage, setPicMessage] = useState("");
+  const [picMessage1, setPicMessage1] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [cnic, setCnic] = useState()
-  const [backCNIC, setBackCNIC] = useState()
-  const [frontCNIC, setFrontCNIC] = useState()
+  const [cnic, setCnic] = useState();
+  const [backCNIC, setBackCNIC] = useState();
+  const [frontCNIC, setFrontCNIC] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+
+  const postDetails1 = (pics) => {
+    setPicMessage1(null);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "notezipper");
+      data.append("cloud_name", "piyushproj");
+      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setBackCNIC(data.url.toString());
+          toast.success("Image Uploaded");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage1("Please Select an Image");
+    }
+  };
+  const postDetails = (pics) => {
+    setPicMessage(null);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "notezipper");
+      data.append("cloud_name", "piyushproj");
+      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setFrontCNIC(data.url.toString());
+          toast.success("Image Uploaded");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage("Please Select an Image");
+    }
+  };
+
+
+
 
   const csrRegister = useSelector((state) => state.csrRegister);
   const { csrInfo } = csrRegister;
@@ -23,17 +75,16 @@ const CSRRegister = () => {
     if (csrInfo) {
       navigate("/csrProfile");
     }
-  }, [csrInfo,navigate]);
+  }, [csrInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
       toast.success("Password and Comfirm Password donot match");
       return;
-    } else
-      dispatch(CSRsRegister(name, email, password));
+    } else dispatch(CSRsRegister(name, email, password,frontCNIC, backCNIC));
     toast.success("Please Login");
-  }
+  };
 
   return (
     <>
@@ -107,31 +158,31 @@ const CSRRegister = () => {
                 </div>
               </div>
               <div className="row">
-                  <div className="col-md-6 mb-3">
-                    <label className="form-label">Front Image Of CNIC</label>
-                    <span>
-                      <input
-                        type="file"
-                        name="frontCNIC"
-                        value={frontCNIC}
-                        onChange={(e) => setFrontCNIC(e.target.value)}
-                        className="form-control"
-                      />
-                    </span>
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <label className="form-label">Back Image Of CNIC</label>
-                    <span>
-                      <input
-                        type="file"
-                        name="backCNIC"
-                        value={backCNIC}
-                        onChange={(e) => setBackCNIC(e.target.value)}
-                        className="form-control"
-                      />
-                    </span>
-                  </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Front Image Of CNIC</label>
+                  <span>
+                    <input
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                      onChange={(e) => postDetails(e.target.files[0])}
+                      accept=".png, .jpg, .jpeg"
+                    />
+                  </span>
                 </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Back Image Of CNIC</label>
+                  <span>
+                    <input
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                      onChange={(e) => postDetails1(e.target.files[0])}
+                      accept=".png, .jpg, .jpeg"
+                    />
+                  </span>
+                </div>
+              </div>
               <div className="row">
                 <div className="col-md-10 mb-3 form-check">
                   <input
@@ -159,7 +210,7 @@ const CSRRegister = () => {
       </div>
       <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default CSRRegister
+export default CSRRegister;

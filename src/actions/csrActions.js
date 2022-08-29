@@ -52,7 +52,7 @@ export const CSRsLogout = () => async (dispatch) => {
 // Register
 
 export const CSRsRegister =
-  (name, email, password, pic) => async (dispatch) => {
+  (name, email, password, frontCNIC, backCNIC, pic) => async (dispatch) => {
     try {
       dispatch({ type: CSR_REGISTER_REQUEST });
 
@@ -64,7 +64,7 @@ export const CSRsRegister =
 
       const { data } = await axios.post(
         "/api/csrr/csrRegister",
-        { name, email, password, pic },
+        { name, email, password, frontCNIC, backCNIC,pic },
         config
       );
 

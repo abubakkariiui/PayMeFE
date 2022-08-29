@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import { AccountantsRegister } from "../actions/accountantActions";
-import './Register.css'
+import "./Register.css";
 
 const AccountantRegister = () => {
   const [name, setName] = useState("");
@@ -20,8 +20,6 @@ const AccountantRegister = () => {
 
   const accountantRegister = useSelector((state) => state.accountantRegister);
   const { accountantInfo } = accountantRegister;
-
-
 
   const postDetails1 = (pics) => {
     setPicMessage1(null);
@@ -81,7 +79,8 @@ const AccountantRegister = () => {
     if (password !== confirmpassword) {
       toast.success("Password and Comfirm Password donot match");
       return;
-    } else dispatch(AccountantsRegister(name, email, password, frontCNIC, backCNIC));
+    } else
+      dispatch(AccountantsRegister(name, email, password, frontCNIC, backCNIC));
     toast.success("Please Login");
   };
 

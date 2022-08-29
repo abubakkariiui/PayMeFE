@@ -19,8 +19,8 @@ const ViewRequest = () => {
       <br />
       <div className="container">
         <div className="row">
-          <div className="col-12">
-            <table className="table table-responsive">
+          <div>
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">Name</th>
@@ -35,7 +35,9 @@ const ViewRequest = () => {
                     <td>{d.email}</td>
                     <td>
                       <Link to={`/users/${d._id}`}>
-                        <button className="btn btn-info mx-3">View</button>
+                        <button className="btn btn-info mx-3">
+                          View Details
+                        </button>
                       </Link>
                     </td>
                   </tr>
