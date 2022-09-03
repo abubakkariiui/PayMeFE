@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate, useParams } from "react-router";
-import { useDispatch } from "react-redux";
-import { updateProfile } from "../actions/userActions";
-const UserDetail = () => {
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router';
+import axios from 'axios';
+const AccountantDetail = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
-  const [cnic, setCnic] = useState();
   const [cnicFront, setCnicFront] = useState();
   const [cnicBack, setCnicBack] = useState();
   const [isAdmin, setIsAdmin] = useState(true);
@@ -17,14 +14,11 @@ const UserDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log("id is ", id);
     const fetching = async () => {
-      const { data } = await axios.get(`/api/users/${id}`);
+      const { data } = await axios.get(`/api/accountant/${id}`);
       console.log(data);
       setName(data.name);
-      setEmail(data.email);
-      setPhone(data.phone);
-      setCnic(data.cnic);
+      setEmail(data.email)
       setCnicFront(data.frontCNIC);
       setCnicBack(data.backCNIC);
     };
@@ -33,22 +27,21 @@ const UserDetail = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`/api/users/${id}`)
+      .delete(`/api/accountant/${id}`)
       .then((res) => {
-        navigate("/viewRequest");
+        navigate("/allAccountant");
         console.log("data delete");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
   return (
     <>
       <br />
       <br />
       <h3 className="text-center">
-        <u>USER DETAIL</u>
+        <u>ACCOUNTANT DETAIL</u>
       </h3>
       <br />
       <div className="container">
@@ -59,14 +52,6 @@ const UserDetail = () => {
         <div className="row">
           <div className="col-md-6">Email</div>
           <div className="col-md-6">{email}</div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">Phone</div>
-          <div className="col-md-6">{phone}</div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">CNIC</div>
-          <div className="col-md-6">{cnic}</div>
         </div>
         <div className="row">
           <div className="col-md-6">CNIC FRONT PIC</div>
@@ -88,7 +73,7 @@ const UserDetail = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default UserDetail;
+export default AccountantDetail

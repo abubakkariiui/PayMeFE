@@ -39,7 +39,7 @@ const AccountHandlerDashboard = () => {
                 <img src={his} className="card-img-top" alt="img" />{" "}
               </NavLink>
               <div className="card-body">
-                <h5 className="card-title text-center">View All Request</h5>
+                <h5 className="card-title text-center">User Requests</h5>
               </div>
             </div>
           </div>

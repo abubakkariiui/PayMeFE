@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 const Common = () => {
   return (
-    <div className="container" style={{ marginTop: 150 }}>
+    <div className="container" style={{ marginTop: 100 }}>
       <div className="row">
-        <div className="col-md-3 text-center">
+        <div className="col-md-4 text-center">
           <h4>Login as Admin </h4>
           <NavLink className="btn btn-success" to="/adminLogin">
             Log in
@@ -14,7 +14,7 @@ const Common = () => {
             Register
           </NavLink>
         </div>
-        <div className="col-md-3 text-center">
+        <div className="col-md-4 text-center">
           <h4>Login as Accountant </h4>
           <NavLink className="btn btn-success" to="/accountantLogin">
             Log in
@@ -24,7 +24,20 @@ const Common = () => {
             Register
           </NavLink>
         </div>
-        <div className="col-md-3 text-center">
+        <div className="col-md-4 text-center">
+          <h4>Login as Accountant Handler </h4>
+          <NavLink className="btn btn-success" to="/handlerLogin">
+            Log in
+          </NavLink>
+          <h4>Register as Accountant Handler</h4>
+          <NavLink className="btn btn-success" to="/handlerRegister">
+            Register
+          </NavLink>
+        </div>
+      </div>
+      <hr />
+      <div className="row mt-5">
+        <div className="col-md-6 text-center">
           <h4>Login as CSR </h4>
           <NavLink className="btn btn-success" to="/csrLogin">
             Log in
@@ -34,8 +47,8 @@ const Common = () => {
             Register
           </NavLink>
         </div>
-        <div className="col-md-3 text-center">
-        <h4>Login as  Franchise Manager</h4>
+        <div className="col-md-6 text-center">
+          <h4>Login as Franchise Manager</h4>
           <NavLink className="btn btn-success" to="/franchiseLogin">
             Log in
           </NavLink>

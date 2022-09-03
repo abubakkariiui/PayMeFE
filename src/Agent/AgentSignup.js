@@ -8,21 +8,72 @@ const AgentSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
+  const [picMessage, setPicMessage] = useState("");
+  const [picMessage1, setPicMessage1] = useState("");
   const [pranchiseName, setPranchiseName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState()
+  const [phone, setPhone] = useState();
+  const [backCNIC, setBackCNIC] = useState();
+  const [frontCNIC, setFrontCNIC] = useState();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
   const { agentInfo } = userRegister;
 
+  const postDetails1 = (pics) => {
+    setPicMessage1(null);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "notezipper");
+      data.append("cloud_name", "piyushproj");
+      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setBackCNIC(data.url.toString());
+          toast.success("Image Uploaded");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage1("Please Select an Image");
+    }
+  };
+  const postDetails = (pics) => {
+    setPicMessage(null);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "notezipper");
+      data.append("cloud_name", "piyushproj");
+      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setFrontCNIC(data.url.toString());
+          toast.success("Image Uploaded");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage("Please Select an Image");
+    }
+  };
+
   useEffect(() => {
     if (agentInfo) {
       navigate("/agentProfile");
     }
-  }, [agentInfo,navigate]);
+  }, [agentInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -30,7 +81,18 @@ const AgentSignup = () => {
       toast.success("Password and Comfirm Password donot match");
       return;
     } else
-      dispatch(registerAgent(name, email, address,phone, pranchiseName, password));
+      dispatch(
+        registerAgent(
+          name,
+          email,
+          address,
+          phone,
+          pranchiseName,
+          password,
+          frontCNIC,
+          backCNIC
+        )
+      );
     toast.success("Please Login");
   };
 
@@ -99,7 +161,9 @@ const AgentSignup = () => {
                   value={pranchiseName}
                   onChange={(e) => setPranchiseName(e.target.value)}
                 >
-                  <option value="Commercial Market" selected>Commercial Market</option>
+                  <option value="Commercial Market" selected>
+                    Commercial Market
+                  </option>
                   <option value="Valancia Town">Valancia Town</option>
                   <option value="Muslim Town">Muslim Town</option>
                   <option value="Wapda Town">Wapda Town</option>
@@ -116,13 +180,7 @@ const AgentSignup = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     id="inputPassword5"
                     className="form-control"
-                    aria-describedby="passwordHelpBlock"
                   />
-                  <div id="passwordHelpBlock" className="form-text">
-                    Your password must be 8-20 characters long, contain letters
-                    and numbers, and must not contain spaces, special
-                    characters, or emoji.
-                  </div>
                 </div>
                 <div className="col-md-6 mb-3">
                   <label className="form-label">Confirm Password</label>
@@ -134,6 +192,32 @@ const AgentSignup = () => {
                     className="form-control"
                     id="exampleInputPassword1"
                   />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Front Image Of CNIC</label>
+                  <span>
+                    <input
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                      onChange={(e) => postDetails(e.target.files[0])}
+                      accept=".png, .jpg, .jpeg"
+                    />
+                  </span>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label className="form-label">Back Image Of CNIC</label>
+                  <span>
+                    <input
+                      type="file"
+                      name="image"
+                      id="imageUpload"
+                      onChange={(e) => postDetails1(e.target.files[0])}
+                      accept=".png, .jpg, .jpeg"
+                    />
+                  </span>
                 </div>
               </div>
               <div className="row">

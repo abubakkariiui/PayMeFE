@@ -61,7 +61,12 @@ import AccountHandlerDashboard from "./AccountantHandler/AccountHandlerDashboard
 import AccountHandlerProfile from "./AccountantHandler/AccountHandlerProfile";
 import ViewRequest from "./AccountantHandler/ViewRequest";
 import UserDetail from "./AccountantHandler/UserDetail";
-
+import AccountantDetail from "./Accountant/AccountantDetail";
+import FranchiseDetail from "./Franchise/FranchiseDetail";
+import CSRDetail from "./CSR/CSRDetail";
+import AllAccountHandler from "./AccountantHandler/AllAccountHandler";
+import AccountHandlerDetail from './AccountantHandler/AccountHandlerDetail'
+import AgentDetail from "./Agent/AgentDetail";
 const App = () => {
   return (
     <>
@@ -97,6 +102,7 @@ const App = () => {
         <Route path="/signup" element={<Signin />} />
         <Route path="/management" element={<Common />} />
         <Route path="/tansferAgent" element={<TransferAgent />} />
+        <Route path="/agent/:id" element={<AgentDetail />} />
 
         {/* AccountHandler */}
 
@@ -106,6 +112,8 @@ const App = () => {
         <Route path="/handlerProfile" element={<AccountHandlerProfile />} />
         <Route path="/viewRequest" element={<ViewRequest />} />
         <Route path="/users/:id" element={<UserDetail />} />
+        <Route path="/allAccountHandler" element={<AllAccountHandler />} />
+        <Route path="/handler/:id" element={<AccountHandlerDetail />} />
 
         {/* CSR */}
         <Route path="/csrDashboard" element={<CSRDashboard />} />
@@ -113,6 +121,7 @@ const App = () => {
         <Route path="/csrRegister" element={<CSRRegister />} />
         <Route path="/csrLogin" element={<CSRLogin />} />
         <Route path="/allCSR" element={<AllCSR />} />
+        <Route path="/csrr/:id"  element={<CSRDetail />} />
 
         {/* Franchise */}
         <Route path="/franchiseRegister" element={<FranchiseRegister />} />
@@ -121,6 +130,7 @@ const App = () => {
         <Route path="/franchise" element={<FranchiseDashboard />} />
         <Route path="/allFranchises" element={<AllFranchise />} />
         <Route path="/franchiseAgent" element={<MoneyFranchise />} />
+        <Route path="/franchise/:id" element={<FranchiseDetail />} />
 
         {/* Accountant */}
         <Route path="/accountant" element={<AccountantDashboard />} />
@@ -128,6 +138,7 @@ const App = () => {
         <Route path="/accountantRegister" element={<AccountantRegister />} />
         <Route path="/accountantProfile" element={<AccountantProfile />} />
         <Route path="/allAccountant" element={<AllAccountant />} />
+        <Route path="/accountant/:id" element={<AccountantDetail />} />
 
         {/* Admin */}
         <Route path="/adminRegister" element={<AdminSignUp />} />

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -15,7 +15,13 @@ const Login = (props) => {
   const { userInfo } = userLogin;
   useEffect(() => {
     if (userInfo) {
-      navigate("/Profile");
+      if (userInfo.isAdmin === false) {
+        toast.warning("Account approval request sent");
+        toast.warning("Account not approved.");
+        return;
+      } else {
+        navigate("/Profile");
+      }
     }
   }, [userInfo]);
 
@@ -28,7 +34,9 @@ const Login = (props) => {
     <>
       <div className="my-5">
         <h1 className="text-center">Log In</h1>
-        <p className="text-center">Login as <Link to='/agentLogin'>Agent</Link></p>
+        <p className="text-center">
+          Login as <Link to="/agentLogin">Agent</Link>
+        </p>
       </div>
       <div className="Container contact_div">
         <div className="row">
@@ -66,6 +74,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
   );
 };

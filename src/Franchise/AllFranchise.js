@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const AllFranchise = () => {
   const [data, setData] = useState([]);
@@ -53,7 +53,9 @@ const AllFranchise = () => {
                     <th scope="row">{d.name}</th>
                     <td>{d.email}</td>
                     <td>
-                      <button className="btn btn-danger" onClick={() => handleDelete(d._id)}>Delete</button>
+                      <Link to={`/franchise/${d._id}`}>
+                        <button className="btn btn-info">View Detail</button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
