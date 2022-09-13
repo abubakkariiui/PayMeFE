@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const ViewRequest = () => {
   const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
   useEffect(() => {
     axios.get("/api/users/getAllUser").then((res) => {
-      setData(res.data);
+      const data1 = res.data.filter((item) => {
+        return item.isAdmin == false;
+      });
+      setFilterData(data1);
     });
   }, []);
 
@@ -29,7 +33,7 @@ const ViewRequest = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((d) => (
+                {filterData.map((d) => (
                   <tr key={d._id}>
                     <th scope="row">{d.name}</th>
                     <td>{d.email}</td>

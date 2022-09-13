@@ -20,7 +20,7 @@ const Login = (props) => {
         toast.warning("Account not approved.");
         return;
       } else {
-        navigate("/Profile");
+      navigate("/Profile");
       }
     }
   }, [userInfo]);
