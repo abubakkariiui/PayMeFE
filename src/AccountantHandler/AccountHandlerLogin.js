@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { HandlerLogin } from '../actions/handlerActions';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { HandlerLogin } from "../actions/handlerActions";
+import { toast, ToastContainer } from "react-toastify";
 
 const AccountHandlerLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,12 @@ const AccountHandlerLogin = () => {
 
   useEffect(() => {
     if (handlerInfo) {
-      navigate("/handlerDashboard");
+      if (handlerInfo.isApprove == false) {
+        toast.warning("Account approval request sent");
+        toast.warning("Account not approved.");
+      } else {
+        navigate("/handlerDashboard");
+      }
     }
   }, [handlerInfo, navigate]);
 
@@ -23,7 +29,7 @@ const AccountHandlerLogin = () => {
     dispatch(HandlerLogin(email, password));
     setTimeout(() => {
       window.location.reload();
-    }, 1000)
+    }, 1000);
   };
   return (
     <>
@@ -66,8 +72,9 @@ const AccountHandlerLogin = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default AccountHandlerLogin
+export default AccountHandlerLogin;

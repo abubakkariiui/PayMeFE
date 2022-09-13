@@ -26,6 +26,11 @@ const AccountHandlerDetail = () => {
     fetching();
   }, []);
 
+  const handleApprove = () => {
+    axios.post(`/api/handler/handleApprove/${id}`);
+    navigate("/allAccountHandler");
+  };
+
   const handleDelete = (id) => {
     axios
       .delete(`/api/handler/${id}`)
@@ -67,7 +72,9 @@ const AccountHandlerDetail = () => {
           </div>
         </div>
         <div className="m-5" style={{ float: "right" }}>
-          <button className="btn btn-success mx-3">Approve</button>
+          <button className="btn btn-success mx-3" onClick={handleApprove}>
+            Approve
+          </button>
           <button className="btn btn-danger" onClick={() => handleDelete(id)}>
             Reject
           </button>

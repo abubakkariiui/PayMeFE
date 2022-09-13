@@ -7,8 +7,8 @@ import setting from "../../src/images/settings.svg";
 import { useSelector } from "react-redux";
 
 const AccountantDashboard = () => {
-  const [name, setName] = useState()
-  const [pic, setPic] = useState()
+  const [name, setName] = useState();
+  const [pic, setPic] = useState();
 
   const accountantLogin = useSelector((state) => state.accountantLogin);
   const { accountantInfo } = accountantLogin;
@@ -22,13 +22,19 @@ const AccountantDashboard = () => {
 
   return (
     <>
-      <div className="container-fluid" style={{margin: '100px 0px'}}>
+      <div className="container-fluid" style={{ margin: "100px 0px" }}>
         <div className="row">
           <div className="col-2"></div>
           <div className="col-1"></div>
           <div className="col-2">
             <div className="card churai cd">
-              <img src={pic} className="card-img-top" width="180" height="186" alt="image" />
+              <img
+                src={pic}
+                className="card-img-top"
+                width="180"
+                height="186"
+                alt="image"
+              />
               <div className="card-body text-center">
                 <h5 className="card-title">{name}</h5>
               </div>

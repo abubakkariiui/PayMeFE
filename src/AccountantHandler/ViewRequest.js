@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const ViewRequest = () => {
-  const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   useEffect(() => {
     axios.get("/api/users/getAllUser").then((res) => {

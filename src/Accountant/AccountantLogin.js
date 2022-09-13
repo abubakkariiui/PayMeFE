@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { AccountantsLogin } from '../actions/accountantActions'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
+import { AccountantsLogin } from "../actions/accountantActions";
 
 const AccountantLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,20 +15,25 @@ const AccountantLogin = () => {
 
   useEffect(() => {
     if (accountantInfo) {
-      navigate("/accountantProfile");
+      if (accountantInfo.isApprove === false) {
+        toast.warning("Account approval request sent");
+        toast.warning("Account not approved.");
+      } else {
+        navigate("/accountantProfile");
+      }
     }
-  }, [accountantInfo,navigate]);
+  }, [accountantInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(AccountantsLogin(email, password));
     setTimeout(() => {
       window.location.reload();
-    },1000)
+    }, 1000);
   };
   return (
     <>
-    <div className="my-5">
+      <div className="my-5">
         <h1 className="text-center">ACCOUNTANT LOGIN</h1>
       </div>
       <div className="Container contact_div">
@@ -66,8 +72,9 @@ const AccountantLogin = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default AccountantLogin
+export default AccountantLogin;
