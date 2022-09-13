@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { FLogin } from '../actions/franchiseActions'
+import { toast, ToastContainer } from 'react-toastify';
 
 const FranchiseLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,12 @@ const FranchiseLogin = () => {
 
   useEffect(() => {
     if (fInfo) {
-      navigate("/franchiseProfile");
+      if(fInfo.isApprove === false){
+        toast.warning("Account approval request sent");
+        toast.warning("Account not approved.");
+      }else{
+        navigate("/franchiseProfile");
+      }
     }
   }, [fInfo,navigate]);
 
@@ -66,6 +72,7 @@ const FranchiseLogin = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
   )
 }

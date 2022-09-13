@@ -6,24 +6,13 @@ const AllFranchise = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get("/api/franchise/getAllFranchise").then((res) => {
+      const filterData = res.data.filter((item) => {
+        return item.isApprove === false;
+      });
       console.log(res.data);
-      setData(res.data);
+      setData(filterData);
     });
   }, []);
-
-  const handleDelete = (id) => {
-    axios
-      .delete(`/api/franchise/${id}`)
-      .then((res) => {
-        console.log("data delete");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  };
 
   return (
     <>

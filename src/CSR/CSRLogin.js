@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { CSRsLogin } from '../actions/csrActions';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { CSRsLogin } from "../actions/csrActions";
+import { toast, ToastContainer } from "react-toastify";
 
 const CSRLogin = () => {
   const [email, setEmail] = useState("");
@@ -10,24 +11,30 @@ const CSRLogin = () => {
   const dispatch = useDispatch();
 
   const csrLogin = useSelector((state) => state.csrLogin);
-  const { loading, error, csrInfo } = csrLogin;
+  const { csrInfo } = csrLogin;
 
   useEffect(() => {
     if (csrInfo) {
-      navigate("/csrProfile");
+      if (csrInfo.isApprove === false) {
+        toast.warning("Account approval request sent");
+        toast.warning("Account not approved.");
+        return;
+      } else {
+        navigate("/csrProfile");
+      }
     }
-  }, [csrInfo,navigate]);
+  }, [csrInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(CSRsLogin(email, password));
     setTimeout(() => {
       window.location.reload();
-    },1000)
+    }, 1000);
   };
   return (
     <>
-    <div className="my-5">
+      <div className="my-5">
         <h1 className="text-center">CSR LOGIN</h1>
       </div>
       <div className="Container contact_div">
@@ -66,8 +73,9 @@ const CSRLogin = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default CSRLogin
+export default CSRLogin;

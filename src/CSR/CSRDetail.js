@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import axios from "axios";
 const CSRDetail = () => {
-    const [name, setName] = useState();
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [cnicFront, setCnicFront] = useState();
   const [cnicBack, setCnicBack] = useState();
@@ -18,12 +18,17 @@ const CSRDetail = () => {
       const { data } = await axios.get(`/api/csrr/${id}`);
       console.log(data);
       setName(data.name);
-      setEmail(data.email)
+      setEmail(data.email);
       setCnicFront(data.frontCNIC);
       setCnicBack(data.backCNIC);
     };
     fetching();
   }, []);
+
+  const handleApprove = () => {
+    axios.post(`/api/csrr/handleApprove/${id}`);
+    navigate("/allCSR");
+  };
 
   const handleDelete = (id) => {
     axios
@@ -38,7 +43,7 @@ const CSRDetail = () => {
   };
   return (
     <>
-    <br />
+      <br />
       <br />
       <h3 className="text-center">
         <u>CSR DETAIL</u>
@@ -66,14 +71,16 @@ const CSRDetail = () => {
           </div>
         </div>
         <div className="m-5" style={{ float: "right" }}>
-          <button className="btn btn-success mx-3">Approve</button>
+          <button className="btn btn-success mx-3" onClick={handleApprove}>
+            Approve
+          </button>
           <button className="btn btn-danger" onClick={() => handleDelete(id)}>
             Reject
           </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CSRDetail
+export default CSRDetail;

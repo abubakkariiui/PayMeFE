@@ -93,7 +93,7 @@ const AgentSignup = () => {
           backCNIC
         )
       );
-    toast.success("Please Login");
+    navigate("/agentLogin");
   };
 
   return (

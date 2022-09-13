@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAgent } from "../actions/agentActions";
+import { toast, ToastContainer } from "react-toastify";
 
 const AgentSignIn = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -14,17 +14,18 @@ const AgentSignIn = () => {
   const { agentInfo } = agentLogin;
   useEffect(() => {
     if (agentInfo) {
-      localStorage.getItem('agentInfo');
+      if (agentInfo.isApprove === false) {
+        toast.warning("Account approval request sent");
+        toast.warning("Account not approved.");
+        return;
+      }
       navigate("/agentProfile");
     }
-  }, [agentInfo,navigate]);
+  }, [agentInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginAgent(email, password));
-    // setTimeout(() => {
-    //   window.location.reload();
-    // },1000)
   };
 
   return (
@@ -68,6 +69,7 @@ const AgentSignIn = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
   );
 };

@@ -6,24 +6,12 @@ const AllCSR = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get("/api/csrr/getAllCsr").then((res) => {
-      console.log(res.data);
-      setData(res.data);
+      const filterData = res.data.filter((item) => {
+        return item.isApprove === false;
+      });
+      setData(filterData);
     });
   }, []);
-
-  const handleDelete = (id) => {
-    axios
-      .delete(`/api/csrr/${id}`)
-      .then((res) => {
-        console.log("data delete");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  };
 
   return (
     <>
