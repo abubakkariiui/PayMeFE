@@ -4,17 +4,7 @@ const Common = () => {
   return (
     <div className="container" style={{ marginTop: 100 }}>
       <div className="row">
-        <div className="col-md-4 text-center">
-          <h4>Login as Admin </h4>
-          <NavLink className="btn btn-success" to="/adminLogin">
-            Log in
-          </NavLink>
-          <h4>Register as Admin </h4>
-          <NavLink className="btn btn-success" to="/adminRegister">
-            Register
-          </NavLink>
-        </div>
-        <div className="col-md-4 text-center">
+        <div className="col-md-6 text-center">
           <h4>Login as Accountant </h4>
           <NavLink className="btn btn-success" to="/accountantLogin">
             Log in
@@ -24,7 +14,7 @@ const Common = () => {
             Register
           </NavLink>
         </div>
-        <div className="col-md-4 text-center">
+        <div className="col-md-6 text-center">
           <h4>Login as Accountant Handler </h4>
           <NavLink className="btn btn-success" to="/handlerLogin">
             Log in

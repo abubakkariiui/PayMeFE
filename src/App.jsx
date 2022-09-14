@@ -30,8 +30,8 @@ import AgentWallet from "./Agent/AgentWallet";
 import UserRequest from "./Agent/UserRequest";
 import Accountant from "./components/Accountant";
 import AgentList from "./Agent/AgentList";
-import AdminDashboard from './Admin/AdminDashboard'
-import AdminProfile from './Admin/AdminProfile'
+import AdminDashboard from "./Admin/AdminDashboard";
+import AdminProfile from "./Admin/AdminProfile";
 import AdminSignUp from "./Admin/AdminSignUp";
 import AdminLogin from "./Admin/AdminLogin";
 import FranchiseRegister from "./Franchise/FranchiseRegister";
@@ -42,10 +42,10 @@ import AccountantDashboard from "./Accountant/AccountantDashboard";
 import AccountantLogin from "./Accountant/AccountantLogin";
 import AccountantRegister from "./Accountant/AccountantRegister";
 import AccountantProfile from "./Accountant/AccountantProfile";
-import CSRDashboard from './CSR/CSRDashboard'
-import CSRRegister from './CSR/CSRRegister'
-import CSRProfile from './CSR/CSRProfile'
-import CSRLogin from './CSR/CSRLogin'
+import CSRDashboard from "./CSR/CSRDashboard";
+import CSRRegister from "./CSR/CSRRegister";
+import CSRProfile from "./CSR/CSRProfile";
+import CSRLogin from "./CSR/CSRLogin";
 import Transfer from "./profile/Transfer";
 import AllFranchise from "./Franchise/AllFranchise";
 import AllCSR from "./CSR/AllCSR";
@@ -65,7 +65,7 @@ import AccountantDetail from "./Accountant/AccountantDetail";
 import FranchiseDetail from "./Franchise/FranchiseDetail";
 import CSRDetail from "./CSR/CSRDetail";
 import AllAccountHandler from "./AccountantHandler/AllAccountHandler";
-import AccountHandlerDetail from './AccountantHandler/AccountHandlerDetail'
+import AccountHandlerDetail from "./AccountantHandler/AccountHandlerDetail";
 import AgentDetail from "./Agent/AgentDetail";
 const App = () => {
   return (
@@ -121,11 +121,11 @@ const App = () => {
         <Route path="/csrRegister" element={<CSRRegister />} />
         <Route path="/csrLogin" element={<CSRLogin />} />
         <Route path="/allCSR" element={<AllCSR />} />
-        <Route path="/csrr/:id"  element={<CSRDetail />} />
+        <Route path="/csrr/:id" element={<CSRDetail />} />
 
         {/* Franchise */}
         <Route path="/franchiseRegister" element={<FranchiseRegister />} />
-        <Route path="/franchiseLogin" element={<FranchiseLogin /> }/>
+        <Route path="/franchiseLogin" element={<FranchiseLogin />} />
         <Route path="/franchiseProfile" element={<FranchiseProfile />} />
         <Route path="/franchise" element={<FranchiseDashboard />} />
         <Route path="/allFranchises" element={<AllFranchise />} />

@@ -77,7 +77,7 @@ const CSRProfile = () => {
           password,
         })
       );
-      toast.success("Password Updatd");
+      toast.success("Password Updated");
     } else {
       toast.info("Password is not updated");
       toast.error("Password and confirm Password Donot match");
