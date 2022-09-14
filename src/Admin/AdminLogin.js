@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { Login } from '../actions/adminActions';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { Login } from "../actions/adminActions";
 
 const AdminLogin = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -17,17 +16,16 @@ const AdminLogin = () => {
     if (adminInfo) {
       navigate("/adminProfile");
     }
-  }, [adminInfo,navigate]);
+  }, [adminInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(Login(email, password));
   };
 
-
   return (
     <>
-    <div className="my-5">
+      <div className="my-5">
         <h1 className="text-center">ADMIN LOGIN</h1>
       </div>
       <div className="Container contact_div">
@@ -37,12 +35,13 @@ const AdminLogin = () => {
               <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
                   placeholder="email"
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -67,7 +66,7 @@ const AdminLogin = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AdminLogin
+export default AdminLogin;

@@ -114,6 +114,7 @@ const FranchiseRegister = () => {
                     className="form-control"
                     id="exampleFormControlInput2"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>

@@ -135,7 +135,7 @@ const AdminProfile = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
-                    placeholder="Email"
+                    placeholder="Email" required
                   />
                 </div>
               </div>

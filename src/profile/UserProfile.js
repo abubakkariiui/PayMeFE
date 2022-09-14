@@ -148,6 +148,7 @@ const UserProfile = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
+                    required
                   />
                 </div>
               </div>

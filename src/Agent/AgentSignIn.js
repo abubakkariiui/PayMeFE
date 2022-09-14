@@ -40,12 +40,13 @@ const AgentSignIn = () => {
               <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
                   placeholder="email"
+                  required
                 />
               </div>
               <div className="mb-3">

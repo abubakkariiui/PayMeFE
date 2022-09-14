@@ -15,12 +15,12 @@ const Login = (props) => {
   const { userInfo } = userLogin;
   useEffect(() => {
     if (userInfo) {
-      if (userInfo.isAdmin === false) {
+      if (userInfo.isApprove === false) {
         toast.warning("Account approval request sent");
         toast.warning("Account not approved.");
         return;
       } else {
-      navigate("/Profile");
+        navigate("/Profile");
       }
     }
   }, [userInfo]);
@@ -45,12 +45,13 @@ const Login = (props) => {
               <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
                   placeholder="email"
+                  required
                 />
               </div>
               <div className="mb-3">

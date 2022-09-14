@@ -46,7 +46,7 @@ const Signin = () => {
       return setPicMessage("Please Select an Image");
     }
   };
-  
+
   const postDetails1 = (pics) => {
     setPicMessage1(null);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
@@ -76,7 +76,6 @@ const Signin = () => {
 
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo } = userRegister;
-
 
   useEffect(() => {
     if (userInfo) {
@@ -143,6 +142,7 @@ const Signin = () => {
                     className="form-control"
                     id="exampleFormControlInput2"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>

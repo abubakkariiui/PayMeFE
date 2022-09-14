@@ -17,7 +17,6 @@ const CSRRegister = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const postDetails1 = (pics) => {
     setPicMessage1(null);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
@@ -65,9 +64,6 @@ const CSRRegister = () => {
     }
   };
 
-
-
-
   const csrRegister = useSelector((state) => state.csrRegister);
   const { csrInfo } = csrRegister;
 
@@ -82,7 +78,7 @@ const CSRRegister = () => {
     if (password !== confirmpassword) {
       toast.success("Password and Comfirm Password donot match");
       return;
-    } else dispatch(CSRsRegister(name, email, password,frontCNIC, backCNIC));
+    } else dispatch(CSRsRegister(name, email, password, frontCNIC, backCNIC));
     toast.success("Please Login");
   };
 
@@ -118,6 +114,7 @@ const CSRRegister = () => {
                     className="form-control"
                     id="exampleFormControlInput2"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>

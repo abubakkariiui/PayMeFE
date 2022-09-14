@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { NavLink } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify'
-import { FLogout, updateFProfile } from '../actions/franchiseActions';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { FLogout, updateFProfile } from "../actions/franchiseActions";
 
 const FranchiseProfile = () => {
   const [name, setName] = useState("");
@@ -53,8 +53,8 @@ const FranchiseProfile = () => {
       setEmail(fInfo.email);
       setPic(fInfo.pic);
     }
-  }, [fInfo,navigate]);
-  
+  }, [fInfo, navigate]);
+
   const logoutHandler = () => {
     dispatch(FLogout());
     navigate("/");
@@ -87,7 +87,7 @@ const FranchiseProfile = () => {
     <>
       <div className="mb-3">
         <div>
-          <NavLink   to="/franchise" style={{ marginLeft: 150 }}>
+          <NavLink to="/franchise" style={{ marginLeft: 150 }}>
             Back
           </NavLink>
         </div>
@@ -136,6 +136,7 @@ const FranchiseProfile = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
@@ -188,7 +189,7 @@ const FranchiseProfile = () => {
       </div>
       <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default FranchiseProfile
+export default FranchiseProfile;

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { FLogin } from '../actions/franchiseActions'
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { FLogin } from "../actions/franchiseActions";
+import { toast, ToastContainer } from "react-toastify";
 
 const FranchiseLogin = () => {
   const [email, setEmail] = useState("");
@@ -15,25 +15,25 @@ const FranchiseLogin = () => {
 
   useEffect(() => {
     if (fInfo) {
-      if(fInfo.isApprove === false){
+      if (fInfo.isApprove === false) {
         toast.warning("Account approval request sent");
         toast.warning("Account not approved.");
-      }else{
+      } else {
         navigate("/franchiseProfile");
       }
     }
-  }, [fInfo,navigate]);
+  }, [fInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(FLogin(email, password));
     setTimeout(() => {
       window.location.reload();
-    },1000)
+    }, 1000);
   };
   return (
     <>
-    <div className="my-5">
+      <div className="my-5">
         <h1 className="text-center">FRANCHISE LOGIN</h1>
       </div>
       <div className="Container contact_div">
@@ -43,12 +43,13 @@ const FranchiseLogin = () => {
               <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="form-control"
                   placeholder="email"
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -74,7 +75,7 @@ const FranchiseLogin = () => {
       </div>
       <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default FranchiseLogin
+export default FranchiseLogin;

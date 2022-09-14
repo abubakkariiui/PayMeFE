@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { AdminRegister, Register } from '../actions/adminActions';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+import React, { useEffect, useState } from "react";
+import { AdminRegister, Register } from "../actions/adminActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
 const AdminSignUp = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
@@ -19,17 +19,16 @@ const AdminSignUp = () => {
     if (adminInfo) {
       navigate("/adminProfile");
     }
-  }, [adminInfo,navigate]);
+  }, [adminInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
       toast.success("Password and Comfirm Password donot match");
       return;
-    } else
-      dispatch(Register(name, email, password));
+    } else dispatch(Register(name, email, password));
     toast.success("Please Login");
-  }
+  };
 
   return (
     <>
@@ -63,6 +62,7 @@ const AdminSignUp = () => {
                     className="form-control"
                     id="exampleFormControlInput2"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
@@ -123,7 +123,7 @@ const AdminSignUp = () => {
       </div>
       <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default AdminSignUp
+export default AdminSignUp;

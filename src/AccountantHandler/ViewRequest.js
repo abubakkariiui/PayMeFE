@@ -6,7 +6,7 @@ const ViewRequest = () => {
   useEffect(() => {
     axios.get("/api/users/getAllUser").then((res) => {
       const data1 = res.data.filter((item) => {
-        return item.isAdmin == false;
+        return item.isApprove === false;
       });
       setFilterData(data1);
     });

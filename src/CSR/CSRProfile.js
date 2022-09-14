@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
-import { NavLink } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify'
-import { CSRsLogout, updateCSRsProfile } from '../actions/csrActions';
-import { FLogout, updateFProfile } from '../actions/franchiseActions';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { NavLink } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { CSRsLogout, updateCSRsProfile } from "../actions/csrActions";
+import { FLogout, updateFProfile } from "../actions/franchiseActions";
 
 const CSRProfile = () => {
   const [name, setName] = useState("");
@@ -54,8 +54,8 @@ const CSRProfile = () => {
       setEmail(csrInfo.email);
       setPic(csrInfo.pic);
     }
-  }, [csrInfo,navigate]);
-  
+  }, [csrInfo, navigate]);
+
   const logoutHandler = () => {
     dispatch(CSRsLogout());
     navigate("/");
@@ -88,7 +88,7 @@ const CSRProfile = () => {
     <>
       <div className="mb-3">
         <div>
-          <NavLink   to="/csrDashboard" style={{ marginLeft: 150 }}>
+          <NavLink to="/csrDashboard" style={{ marginLeft: 150 }}>
             Back
           </NavLink>
         </div>
@@ -137,6 +137,7 @@ const CSRProfile = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
@@ -189,7 +190,7 @@ const CSRProfile = () => {
       </div>
       <ToastContainer autoClose={2000} position="top-right" theme="dark" />
     </>
-  )
-}
+  );
+};
 
-export default CSRProfile
+export default CSRProfile;

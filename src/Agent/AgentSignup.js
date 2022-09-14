@@ -128,6 +128,7 @@ const AgentSignup = () => {
                     className="form-control"
                     id="exampleFormControlInput2"
                     placeholder="name@mail.com"
+                    required
                   />
                 </div>
               </div>

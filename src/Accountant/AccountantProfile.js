@@ -141,6 +141,7 @@ const AccountantProfile = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     placeholder="Email"
+                    required
                   />
                 </div>
               </div>
