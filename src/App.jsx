@@ -79,8 +79,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contactList" element={<ContactList />} />
         <Route path="/service" element={<Service />} />
-        <Route path="/agentRegister" element={<AgentSignup />} />
-        <Route path="/agentLogin" element={<AgentSignIn />} />
+        
         <Route path="/transAgent" element={<AgentTransfer />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
@@ -102,6 +101,11 @@ const App = () => {
         <Route path="/signup" element={<Signin />} />
         <Route path="/management" element={<Common />} />
         <Route path="/tansferAgent" element={<TransferAgent />} />
+		
+		{/* Agent */}
+		
+		<Route path="/agentRegister" element={<AgentSignup />} />
+        <Route path="/agentLogin" element={<AgentSignIn />} />
         <Route path="/agent/:id" element={<AgentDetail />} />
 
         {/* AccountHandler */}
