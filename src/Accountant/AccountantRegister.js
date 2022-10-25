@@ -70,7 +70,7 @@ const AccountantRegister = () => {
 
   useEffect(() => {
     if (accountantInfo) {
-      navigate("/accountantProfile");
+      navigate("/accountantLogin");
     }
   }, [accountantInfo, navigate]);
 

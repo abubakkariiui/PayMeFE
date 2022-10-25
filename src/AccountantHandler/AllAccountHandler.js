@@ -9,7 +9,6 @@ const AllAccountHandler = () => {
       const filterData = res.data.filter((item) => {
         return item.isApprove == false;
       });
-      console.log(res.data);
       setData(filterData);
     });
   }, []);

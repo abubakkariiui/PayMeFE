@@ -58,7 +58,7 @@ const CSRProfile = () => {
 
   const logoutHandler = () => {
     dispatch(CSRsLogout());
-    navigate("/");
+    navigate("/csrLogin");
   };
   const submitHandler = (e) => {
     e.preventDefault();

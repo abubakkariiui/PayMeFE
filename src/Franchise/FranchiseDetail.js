@@ -17,7 +17,6 @@ const FranchiseDetail = () => {
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/franchise/${id}`);
-      console.log(data);
       setName(data.name);
       setEmail(data.email);
       setCnicFront(data.frontCNIC);

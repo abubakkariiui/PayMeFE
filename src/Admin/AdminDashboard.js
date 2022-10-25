@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   const { adminInfo } = adminLogin;
 
   useEffect(() => {
-    if (adminInfo) {
+    if (!adminInfo) {
       setName(adminInfo.name);
       setPic(adminInfo.pic);
     }

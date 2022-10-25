@@ -69,7 +69,7 @@ const CSRRegister = () => {
 
   useEffect(() => {
     if (csrInfo) {
-      navigate("/csrProfile");
+      navigate("/csrLogin");
     }
   }, [csrInfo, navigate]);
 

@@ -16,20 +16,20 @@ const FranchiseLogin = () => {
   useEffect(() => {
     if (fInfo) {
       if (fInfo.isApprove === false) {
-        toast.warning("Account approval request sent");
-        toast.warning("Account not approved.");
+        return
       } else {
         navigate("/franchiseProfile");
       }
     }
   }, [fInfo, navigate]);
-
+  
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(FLogin(email, password));
+    toast.warning("Account not approved.");
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 2000);
   };
   return (
     <>

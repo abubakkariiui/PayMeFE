@@ -57,7 +57,7 @@ const AccountHandlerProfile = () => {
 
   const logoutHandler = () => {
     dispatch(HandlerLogout());
-    navigate("/");
+    navigate("/handlerLogin");
   };
   const submitHandler = (e) => {
     e.preventDefault();

@@ -69,7 +69,7 @@ const FranchiseRegister = () => {
 
   useEffect(() => {
     if (fInfo) {
-      navigate("/adminProfile");
+      navigate("/franchiseLogin");
     }
   }, [fInfo, navigate]);
 

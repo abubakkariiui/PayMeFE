@@ -16,7 +16,6 @@ const CSRDetail = () => {
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/csrr/${id}`);
-      console.log(data);
       setName(data.name);
       setEmail(data.email);
       setCnicFront(data.frontCNIC);

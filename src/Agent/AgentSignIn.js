@@ -15,17 +15,16 @@ const AgentSignIn = () => {
   useEffect(() => {
     if (agentInfo) {
       if (agentInfo.isApprove === false) {
-        toast.warning("Account approval request sent");
-        toast.warning("Account not approved.");
         return;
       }
       navigate("/agentProfile");
     }
   }, [agentInfo, navigate]);
-
+  
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginAgent(email, password));
+    toast.warning("Account not approved.");
   };
 
   return (

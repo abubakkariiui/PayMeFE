@@ -16,7 +16,6 @@ const AccountantDetail = () => {
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/accountant/${id}`);
-      console.log(data);
       setName(data.name);
       setEmail(data.email);
       setCnicFront(data.frontCNIC);

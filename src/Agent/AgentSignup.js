@@ -71,7 +71,7 @@ const AgentSignup = () => {
 
   useEffect(() => {
     if (agentInfo) {
-      navigate("/agentProfile");
+      navigate("/agentLogin");
     }
   }, [agentInfo, navigate]);
 

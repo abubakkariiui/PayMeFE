@@ -17,7 +17,6 @@ const AccountHandlerDetail = () => {
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/handler/${id}`);
-      console.log(data);
       setName(data.name);
       setEmail(data.email);
       setCnicFront(data.frontCNIC);

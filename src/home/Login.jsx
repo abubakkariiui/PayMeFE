@@ -16,18 +16,18 @@ const Login = (props) => {
   useEffect(() => {
     if (userInfo) {
       if (userInfo.isApprove === false) {
-        toast.warning("Account approval request sent");
-        toast.warning("Account not approved.");
+        return
         return;
       } else {
         navigate("/Profile");
       }
     }
   }, [userInfo]);
-
+  
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    toast.warning("Account not approved.");
   };
 
   return (

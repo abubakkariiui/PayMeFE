@@ -65,7 +65,7 @@ const AgentProfile = () => {
 
   const logoutHandler = () => {
     dispatch(logoutAgent());
-    navigate("/");
+    navigate("/agentLogin");
   };
 
   const submitHandler = (e) => {

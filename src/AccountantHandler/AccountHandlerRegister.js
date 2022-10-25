@@ -69,7 +69,7 @@ const AccountHandlerRegister = () => {
 
   useEffect(() => {
     if (handlerInfo) {
-      navigate("/handlerProfile");
+      navigate("/handlerLogin");
     }
   }, [handlerInfo, navigate]);
 

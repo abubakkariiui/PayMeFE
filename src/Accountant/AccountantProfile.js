@@ -62,7 +62,7 @@ const AccountantProfile = () => {
   
   const logoutHandler = () => {
     dispatch(AccountantsLogout());
-    navigate("/");
+    navigate("/accountantLogin");
   };
   const submitHandler = (e) => {
     e.preventDefault();

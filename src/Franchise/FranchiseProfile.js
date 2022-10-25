@@ -57,7 +57,7 @@ const FranchiseProfile = () => {
 
   const logoutHandler = () => {
     dispatch(FLogout());
-    navigate("/");
+    navigate("/franchiseLogin");
   };
   const submitHandler = (e) => {
     e.preventDefault();

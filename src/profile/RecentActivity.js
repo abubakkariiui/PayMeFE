@@ -6,7 +6,6 @@ const RecentActivity = () => {
 
   useEffect(() => {
     axios.get("/api/history").then((res) => {
-      console.log(res.data);
       setData(res.data);
     });
   }, []);

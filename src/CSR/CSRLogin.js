@@ -16,21 +16,20 @@ const CSRLogin = () => {
   useEffect(() => {
     if (csrInfo) {
       if (csrInfo.isApprove === false) {
-        toast.warning("Account approval request sent");
-        toast.warning("Account not approved.");
         return;
       } else {
         navigate("/csrProfile");
       }
     }
   }, [csrInfo, navigate]);
-
+  
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(CSRsLogin(email, password));
+    toast.warning("Account not approved.");
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 2000);
   };
   return (
     <>
